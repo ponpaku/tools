@@ -214,6 +214,45 @@ export const toolsConfig: ToolConfig = {
       ]
     },
     {
+      id: "games",
+      name: "ゲーム",
+      icon: "Gamepad2",
+      tools: [
+        {
+          id: "bingo-roulette",
+          name: "ビンゴルーレット",
+          description: "ビンゴ番号抽選器（演出付き）",
+          category: "games",
+          icon: "CircleDot",
+          path: "/tools/bingo-roulette"
+        },
+        {
+          id: "bingo-card",
+          name: "ビンゴカード",
+          description: "ビンゴカード生成・管理",
+          category: "games",
+          icon: "Grid3X3",
+          path: "/tools/bingo-card"
+        },
+        {
+          id: "roulette",
+          name: "ルーレット",
+          description: "カスタムルーレットで抽選・選択",
+          category: "games",
+          icon: "RotateCcw",
+          path: "/tools/roulette"
+        },
+        {
+          id: "scoreboard",
+          name: "スコアボード",
+          description: "点数を記録・管理",
+          category: "games",
+          icon: "Trophy",
+          path: "/tools/scoreboard"
+        }
+      ]
+    },
+    {
       id: "utility",
       name: "ユーティリティ",
       icon: "Settings",
@@ -257,14 +296,6 @@ export const toolsConfig: ToolConfig = {
           category: "utility",
           icon: "Zap",
           path: "/tools/microwave-calculator"
-        },
-        {
-          id: "scoreboard",
-          name: "スコアボード",
-          description: "点数を記録・管理",
-          category: "utility",
-          icon: "Trophy",
-          path: "/tools/scoreboard"
         }
       ]
     }

@@ -31,12 +31,12 @@ export default function HomePage() {
 		"full-half-converter",
 	];
 
-	// 最近追加されたツール
-	const recentTools = [
-		"exif-viewer",
-		"transfer-calculator",
-		"microwave-calculator",
-		"scoreboard",
+	// 更新履歴
+	const updateHistory = [
+		{ date: "2024-01-15", description: "ルーレット判定バグを修正" },
+		{ date: "2024-01-10", description: "ゲームカテゴリを追加" },
+		{ date: "2024-01-05", description: "スコアボード機能を追加" },
+		{ date: "2024-01-01", description: "電子レンジ時間計算器を追加" },
 	];
 
 	const allTools = useMemo(() => {
@@ -100,6 +100,10 @@ export default function HomePage() {
 			Gauge: "📊",
 			Zap: "⚡",
 			Trophy: "🏆",
+			CircleDot: "⭕",
+			Grid3X3: "🔳",
+			RotateCcw: "🔄",
+			Gamepad2: "🎮",
 		};
 		return iconMap[iconName] || "🔧";
 	};
@@ -235,32 +239,34 @@ export default function HomePage() {
 						{/* 広告エリア1: 人気ツールの後 */}
 						<HomePageAd className="mx-auto max-w-2xl" />
 
-						{/* 最近追加されたツール */}
+						{/* 更新履歴 */}
 						<section>
 							<div className="flex items-center space-x-2 mb-6">
 								<Clock className="h-6 w-6 text-green-600" />
 								<h2 className="text-2xl font-bold text-gray-900">
-									最近追加されたツール
+									更新履歴
 								</h2>
-								<Badge
-									variant="outline"
-									className="border-green-200 text-green-700"
-								>
-									<Zap className="h-3 w-3 mr-1" />
-									NEW
-								</Badge>
 							</div>
 
-							<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-								{allTools
-									.filter((tool) => recentTools.includes(tool.id))
-									.map((tool) => (
-										<ToolCard key={tool.id} tool={tool} />
-									))}
-							</div>
+							<Card className="mb-12">
+								<CardContent className="p-6">
+									<div className="space-y-4">
+										{updateHistory.map((update, index) => (
+											<div key={index} className="flex items-start space-x-4 p-3 rounded-lg bg-gray-50">
+												<div className="text-sm text-green-600 font-medium min-w-[80px]">
+													{update.date}
+												</div>
+												<div className="text-sm text-gray-700">
+													{update.description}
+												</div>
+											</div>
+										))}
+									</div>
+								</CardContent>
+							</Card>
 						</section>
 
-						{/* 広告エリア2: 最近追加されたツールの後 */}
+						{/* 広告エリア2: 更新履歴の後 */}
 						<HomePageAd className="mx-auto max-w-2xl" />
 
 						{/* カテゴリ別ツール */}
