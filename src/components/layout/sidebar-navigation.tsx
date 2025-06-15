@@ -13,7 +13,9 @@ import { cn } from '@/lib/utils'
 export function SidebarNavigation() {
   const pathname = usePathname()
   const [isOpen, setIsOpen] = useState(false)
-  const [expandedCategories, setExpandedCategories] = useState<string[]>(['text', 'encoding', 'datetime'])
+  // デフォで開いときたいカテゴリはここに配列で入れる
+  // 例：const [expandedCategories, setExpandedCategories] = useState<string[]>(['text', 'encoding', 'datetime'])
+  const [expandedCategories, setExpandedCategories] = useState<string[]>(['text'])
 
   const toggleCategory = (categoryId: string) => {
     setExpandedCategories(prev => 
