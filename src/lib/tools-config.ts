@@ -62,6 +62,14 @@ export const toolsConfig: ToolConfig = {
           category: "text",
           icon: "Languages",
           path: "/tools/kanji-converter"
+        },
+        {
+          id: "line-break-converter",
+          name: "改行コード変換",
+          description: "Windows・Unix・Mac間の改行コード変換",
+          category: "text",
+          icon: "ArrowUpDown",
+          path: "/tools/line-break-converter"
         }
       ]
     },
@@ -93,6 +101,14 @@ export const toolsConfig: ToolConfig = {
           category: "encoding",
           icon: "Hash",
           path: "/tools/hash-generator"
+        },
+        {
+          id: "emoji-converter",
+          name: "Emojiコード変換",
+          description: "絵文字とUnicodeコード・HTML Entity・CSS・JavaScript形式の相互変換",
+          category: "encoding",
+          icon: "Smile",
+          path: "/tools/emoji-converter"
         }
       ]
     },
@@ -187,6 +203,46 @@ export const toolsConfig: ToolConfig = {
           category: "dev",
           icon: "Hash",
           path: "/tools/uuid-generator"
+        },
+        {
+          id: "number-base-converter",
+          name: "進数変換",
+          description: "2進数・8進数・10進数・16進数の相互変換",
+          category: "dev",
+          icon: "Hash",
+          path: "/tools/number-base-converter"
+        },
+        {
+          id: "regex-tester",
+          name: "正規表現テスター",
+          description: "正規表現のテスト・検証ツール（カラーハイライト付き）",
+          category: "dev",
+          icon: "Search",
+          path: "/tools/regex-tester"
+        },
+        {
+          id: "color-converter",
+          name: "カラーコード変換",
+          description: "HEX・RGB・HSL・HSV・CMYK形式の色変換ツール",
+          category: "dev",
+          icon: "Palette",
+          path: "/tools/color-converter"
+        },
+        {
+          id: "jwt-decoder",
+          name: "JWT/PASTOデコーダ",
+          description: "JWT（JSON Web Token）とPASETOの解析・デコードツール",
+          category: "dev",
+          icon: "Shield",
+          path: "/tools/jwt-decoder"
+        },
+        {
+          id: "markdown-preview",
+          name: "Markdownプレビュー",
+          description: "Markdownテキストのリアルタイムプレビュー・変換ツール",
+          category: "dev",
+          icon: "Eye",
+          path: "/tools/markdown-preview"
         }
       ]
     },
@@ -249,6 +305,14 @@ export const toolsConfig: ToolConfig = {
           category: "games",
           icon: "Trophy",
           path: "/tools/scoreboard"
+        },
+        {
+          id: "sports-scoreboard",
+          name: "スポーツスコアボード",
+          description: "バスケ・バレー・テニス・卓球のスコア管理",
+          category: "games",
+          icon: "Activity",
+          path: "/tools/sports-scoreboard"
         }
       ]
     },
@@ -296,6 +360,38 @@ export const toolsConfig: ToolConfig = {
           category: "utility",
           icon: "Zap",
           path: "/tools/microwave-calculator"
+        },
+        {
+          id: "unit-converter",
+          name: "単位変換ツール",
+          description: "長さ・重さ・温度の単位変換",
+          category: "utility",
+          icon: "Calculator",
+          path: "/tools/unit-converter"
+        },
+        {
+          id: "bmi-calculator",
+          name: "BMI計算機",
+          description: "身長・体重からBMI（Body Mass Index）を計算",
+          category: "utility",
+          icon: "Activity",
+          path: "/tools/bmi-calculator"
+        },
+        {
+          id: "fraction-percentage-converter",
+          name: "分数・小数・パーセント変換",
+          description: "分数・小数・パーセントの相互変換ツール",
+          category: "utility",
+          icon: "Calculator",
+          path: "/tools/fraction-percentage-converter"
+        },
+        {
+          id: "discount-calculator",
+          name: "商品値引き計算機",
+          description: "割引率・税込価格・ポイント還元を含む商品価格計算ツール",
+          category: "utility",
+          icon: "Percent",
+          path: "/tools/discount-calculator"
         }
       ]
     }

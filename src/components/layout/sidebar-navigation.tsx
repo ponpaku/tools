@@ -39,6 +39,7 @@ export function SidebarNavigation() {
     const iconMap: Record<string, string> = {
       Calculator: '🧮',
       ArrowLeftRight: '↔️',
+      ArrowUpDown: '↕️',
       CaseSensitive: 'Aa',
       RemoveFormatting: '📄',
       Highlighter: '🖍️',
@@ -62,7 +63,13 @@ export function SidebarNavigation() {
       Image: '🖼️',
       Gauge: '📊',
       Zap: '⚡',
-      Trophy: '🏆'
+      Trophy: '🏆',
+      Activity: '🏃',
+      Palette: '🎨',
+      Shield: '🛡️',
+      Eye: '👁️',
+      Percent: '💯',
+      Smile: '😀'
     }
     return iconMap[iconName] || '🔧'
   }

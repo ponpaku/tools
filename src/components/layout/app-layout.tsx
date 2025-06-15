@@ -1,11 +1,12 @@
 'use client'
 
-import { Copy } from 'lucide-react'
+import { Copy, Home, ChevronRight } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { SidebarNavigation } from './sidebar-navigation'
 import { ToolPageAd } from '@/components/ads/ad-wrapper'
 import { useState } from 'react'
+import Link from 'next/link'
 
 interface AppLayoutProps {
   title?: string
@@ -23,10 +24,33 @@ export function AppLayout({ title, description, children, showCard = true, showA
       {/* メインコンテンツ */}
       <main className="lg:ml-80 min-h-screen">
         <div className="pt-16 lg:pt-8 px-4 lg:px-8 py-8">
+          {/* パンくずナビゲーション（ツールページの場合） */}
+          {title && (
+            <nav className="flex items-center space-x-2 text-sm text-gray-600 mb-4">
+              <Link href="/" className="flex items-center hover:text-blue-600 transition-colors">
+                <Home className="w-4 h-4 mr-1" />
+                ホーム
+              </Link>
+              <ChevronRight className="w-4 h-4" />
+              <span className="text-gray-900 font-medium">{title}</span>
+            </nav>
+          )}
+          
           {title && (
             <div className="mb-6">
-              <h1 className="text-3xl font-bold text-gray-900 mb-2">{title}</h1>
-              {description && <p className="text-gray-600">{description}</p>}
+              <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-4 gap-4">
+                <div>
+                  <h1 className="text-3xl font-bold text-gray-900 mb-2">{title}</h1>
+                  {description && <p className="text-gray-600">{description}</p>}
+                </div>
+                <Link href="/" className="self-start md:self-auto">
+                  <Button variant="outline" className="flex items-center gap-2">
+                    <Home className="w-4 h-4" />
+                    <span className="hidden sm:inline">ホームに戻る</span>
+                    <span className="sm:hidden">ホーム</span>
+                  </Button>
+                </Link>
+              </div>
             </div>
           )}
 

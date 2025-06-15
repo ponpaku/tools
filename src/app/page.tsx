@@ -76,6 +76,7 @@ export default function HomePage() {
 		const iconMap: Record<string, string> = {
 			Calculator: "🧮",
 			ArrowLeftRight: "↔️",
+			ArrowUpDown: "↕️",
 			CaseSensitive: "Aa",
 			RemoveFormatting: "📄",
 			Highlighter: "🖍️",
@@ -100,6 +101,10 @@ export default function HomePage() {
 			Gauge: "📊",
 			Zap: "⚡",
 			Trophy: "🏆",
+			Shield: "🛡️",
+			Eye: "👁️",
+			Percent: "💯",
+			Smile: "😀",
 			CircleDot: "⭕",
 			Grid3X3: "🔳",
 			RotateCcw: "🔄",
