@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { Maximize, Minimize, RotateCcw, Play, Pause } from 'lucide-react'
+import { Maximize, Minimize, RotateCcw, Play, Pause, Plus, Minus, Timer } from 'lucide-react'
 
 type SportType = 'basketball' | 'volleyball' | 'tennis' | 'ping-pong'
 
@@ -40,6 +40,9 @@ interface GameState {
   currentSet: number
   isGameStarted: boolean
   isGameFinished: boolean
+  setTimeLimit?: number
+  setTimeRemaining?: number
+  isTimerRunning: boolean
 }
 
 const sportsConfigs: Record<SportType, SportsConfig> = {
@@ -75,6 +78,7 @@ const sportsConfigs: Record<SportType, SportsConfig> = {
 
 export default function SportsScoreboardTool() {
   const [isFullscreen, setIsFullscreen] = useState(false)
+  const [setTimeLimit, setSetTimeLimit] = useState('')
   const [gameState, setGameState] = useState<GameState>({
     sport: 'basketball',
     team1: { name: 'チーム A', sets: 0, currentScore: 0 },
@@ -82,7 +86,8 @@ export default function SportsScoreboardTool() {
     setHistory: [],
     currentSet: 1,
     isGameStarted: false,
-    isGameFinished: false
+    isGameFinished: false,
+    isTimerRunning: false
   })
 
   const config = sportsConfigs[gameState.sport]
@@ -96,6 +101,31 @@ export default function SportsScoreboardTool() {
     document.addEventListener('keydown', handleKeyPress)
     return () => document.removeEventListener('keydown', handleKeyPress)
   }, [isFullscreen])
+
+  // タイマー機能
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null
+    
+    if (gameState.isTimerRunning && gameState.setTimeRemaining && gameState.setTimeRemaining > 0) {
+      interval = setInterval(() => {
+        setGameState(prev => {
+          if (prev.setTimeRemaining && prev.setTimeRemaining > 0) {
+            const newTime = prev.setTimeRemaining - 1
+            if (newTime === 0) {
+              // 時間終了時の処理
+              return { ...prev, setTimeRemaining: 0, isTimerRunning: false }
+            }
+            return { ...prev, setTimeRemaining: newTime }
+          }
+          return prev
+        })
+      }, 1000)
+    }
+    
+    return () => {
+      if (interval) clearInterval(interval)
+    }
+  }, [gameState.isTimerRunning, gameState.setTimeRemaining])
 
   const updateTeamName = (team: 1 | 2, name: string) => {
     setGameState(prev => {
@@ -184,8 +214,48 @@ export default function SportsScoreboardTool() {
       setHistory: [],
       currentSet: 1,
       isGameStarted: false,
-      isGameFinished: false
+      isGameFinished: false,
+      setTimeRemaining: prev.setTimeLimit,
+      isTimerRunning: false
     }))
+  }
+
+  const manualSetChange = (increment: number) => {
+    setGameState(prev => {
+      const newSet = Math.max(1, Math.min(config.maxSets, prev.currentSet + increment))
+      if (newSet !== prev.currentSet) {
+        return {
+          ...prev,
+          currentSet: newSet,
+          team1: { ...prev.team1, currentScore: 0 },
+          team2: { ...prev.team2, currentScore: 0 },
+          setTimeRemaining: prev.setTimeLimit,
+          isTimerRunning: false
+        }
+      }
+      return prev
+    })
+  }
+
+  const toggleTimer = () => {
+    setGameState(prev => ({ ...prev, isTimerRunning: !prev.isTimerRunning }))
+  }
+
+  const setTimer = () => {
+    const timeInSeconds = parseInt(setTimeLimit) * 60
+    if (timeInSeconds > 0) {
+      setGameState(prev => ({
+        ...prev,
+        setTimeLimit: timeInSeconds,
+        setTimeRemaining: timeInSeconds
+      }))
+    }
+  }
+
+  const formatTime = (seconds: number) => {
+    const mins = Math.floor(seconds / 60)
+    const secs = seconds % 60
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
   }
 
   const resetCurrentSet = () => {
@@ -206,10 +276,18 @@ export default function SportsScoreboardTool() {
     <div className="fixed inset-0 bg-black text-white z-50 flex flex-col">
       <div className="flex justify-between items-center p-4 bg-gray-900">
         <div className="text-xl font-bold">{config.name}</div>
-        <Button onClick={() => setIsFullscreen(false)} variant="outline" size="sm">
-          <Minimize className="w-4 h-4 mr-2" />
-          終了
-        </Button>
+        <div className="flex gap-2 items-center">
+          {/* タイマー表示 */}
+          {gameState.setTimeRemaining && (
+            <div className="text-lg font-mono bg-gray-800 px-3 py-1 rounded">
+              {formatTime(gameState.setTimeRemaining)}
+            </div>
+          )}
+          <Button onClick={() => setIsFullscreen(false)} className="bg-red-600 hover:bg-red-700" size="sm">
+            <Minimize className="w-4 h-4 mr-2" />
+            終了
+          </Button>
+        </div>
       </div>
       
       <div className="flex-1 flex items-center justify-center">
@@ -219,7 +297,25 @@ export default function SportsScoreboardTool() {
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold mb-4">{gameState.team1.name}</div>
               <div className="text-8xl md:text-9xl font-bold mb-4">{gameState.team1.currentScore}</div>
-              <div className="text-2xl md:text-3xl">セット: {gameState.team1.sets}</div>
+              <div className="text-2xl md:text-3xl mb-4">セット: {gameState.team1.sets}</div>
+              <div className="flex gap-2 justify-center">
+                <Button 
+                  onClick={() => updateScore(1, 1)} 
+                  disabled={gameState.isGameFinished}
+                  size="lg"
+                  className="bg-blue-600 hover:bg-blue-700"
+                >
+                  <Plus className="w-6 h-6" />
+                </Button>
+                <Button 
+                  onClick={() => updateScore(1, -1)} 
+                  disabled={gameState.isGameFinished}
+                  size="lg"
+                  className="bg-gray-600 hover:bg-gray-700"
+                >
+                  <Minus className="w-6 h-6" />
+                </Button>
+              </div>
             </div>
 
             {/* 中央情報 */}
@@ -230,9 +326,37 @@ export default function SportsScoreboardTool() {
                   {getWinnerMessage()}
                 </div>
               )}
-              <div className="text-lg">
+              <div className="text-lg mb-4">
                 {config.maxPoints}点先取
                 {config.advantage && '（2点差）'}
+              </div>
+              {/* セット手動変更とタイマー制御 */}
+              <div className="flex gap-2 justify-center items-center">
+                <Button 
+                  onClick={() => manualSetChange(-1)} 
+                  disabled={gameState.currentSet <= 1}
+                  size="sm"
+                  className="bg-gray-600 hover:bg-gray-700"
+                >
+                  前セット
+                </Button>
+                <Button 
+                  onClick={() => manualSetChange(1)} 
+                  disabled={gameState.currentSet >= config.maxSets}
+                  size="sm"
+                  className="bg-gray-600 hover:bg-gray-700"
+                >
+                  次セット
+                </Button>
+                {gameState.setTimeRemaining && (
+                  <Button 
+                    onClick={toggleTimer}
+                    size="sm"
+                    className={`${gameState.isTimerRunning ? 'bg-red-600 hover:bg-red-700' : 'bg-green-600 hover:bg-green-700'}`}
+                  >
+                    {gameState.isTimerRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                  </Button>
+                )}
               </div>
             </div>
 
@@ -240,7 +364,25 @@ export default function SportsScoreboardTool() {
             <div className="text-center">
               <div className="text-3xl md:text-4xl font-bold mb-4">{gameState.team2.name}</div>
               <div className="text-8xl md:text-9xl font-bold mb-4">{gameState.team2.currentScore}</div>
-              <div className="text-2xl md:text-3xl">セット: {gameState.team2.sets}</div>
+              <div className="text-2xl md:text-3xl mb-4">セット: {gameState.team2.sets}</div>
+              <div className="flex gap-2 justify-center">
+                <Button 
+                  onClick={() => updateScore(2, 1)} 
+                  disabled={gameState.isGameFinished}
+                  size="lg"
+                  className="bg-red-600 hover:bg-red-700"
+                >
+                  <Plus className="w-6 h-6" />
+                </Button>
+                <Button 
+                  onClick={() => updateScore(2, -1)} 
+                  disabled={gameState.isGameFinished}
+                  size="lg"
+                  className="bg-gray-600 hover:bg-gray-700"
+                >
+                  <Minus className="w-6 h-6" />
+                </Button>
+              </div>
             </div>
           </div>
         </div>
@@ -300,7 +442,39 @@ export default function SportsScoreboardTool() {
                 </div>
               </div>
               
-              <div className="flex gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                <div>
+                  <label className="block text-sm font-medium mb-2">セットタイマー（分）</label>
+                  <div className="flex gap-2">
+                    <Input
+                      type="number"
+                      value={setTimeLimit}
+                      onChange={(e) => setSetTimeLimit(e.target.value)}
+                      placeholder="例: 20"
+                      className="flex-1"
+                    />
+                    <Button onClick={setTimer} size="sm">
+                      <Timer className="w-4 h-4" />
+                    </Button>
+                  </div>
+                </div>
+                
+                {gameState.setTimeRemaining && (
+                  <div>
+                    <label className="block text-sm font-medium mb-2">残り時間</label>
+                    <div className="flex gap-2 items-center">
+                      <div className="text-2xl font-mono bg-gray-100 px-3 py-1 rounded">
+                        {formatTime(gameState.setTimeRemaining)}
+                      </div>
+                      <Button onClick={toggleTimer} size="sm">
+                        {gameState.isTimerRunning ? <Pause className="w-4 h-4" /> : <Play className="w-4 h-4" />}
+                      </Button>
+                    </div>
+                  </div>
+                )}
+              </div>
+              
+              <div className="flex gap-2 flex-wrap">
                 <Button onClick={() => setIsFullscreen(true)} className="flex items-center gap-2">
                   <Maximize className="w-4 h-4" />
                   フルスクリーン
@@ -309,6 +483,14 @@ export default function SportsScoreboardTool() {
                 <Button onClick={resetCurrentSet} variant="outline" disabled={!gameState.isGameStarted}>
                   <RotateCcw className="w-4 h-4 mr-2" />
                   セットリセット
+                </Button>
+                
+                <Button onClick={() => manualSetChange(-1)} variant="outline" disabled={gameState.currentSet <= 1}>
+                  前セット
+                </Button>
+                
+                <Button onClick={() => manualSetChange(1)} variant="outline" disabled={gameState.currentSet >= config.maxSets}>
+                  次セット
                 </Button>
                 
                 <Button onClick={resetGame} variant="outline">
@@ -322,7 +504,14 @@ export default function SportsScoreboardTool() {
           <Card>
             <CardHeader>
               <div className="flex justify-between items-center">
-                <CardTitle>{config.name} - 第{gameState.currentSet}セット</CardTitle>
+                <div>
+                  <CardTitle>{config.name} - 第{gameState.currentSet}セット</CardTitle>
+                  {gameState.setTimeRemaining && (
+                    <div className="text-lg font-mono text-gray-600 mt-1">
+                      残り時間: {formatTime(gameState.setTimeRemaining)}
+                    </div>
+                  )}
+                </div>
                 {gameState.isGameFinished && (
                   <div className="text-xl font-bold text-green-600">
                     {getWinnerMessage()}

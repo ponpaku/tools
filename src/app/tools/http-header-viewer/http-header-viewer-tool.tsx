@@ -113,55 +113,37 @@ export default function HttpHeaderViewerTool() {
     setResult(null)
 
     try {
-      const startTime = Date.now()
-      
-      // CORS制限により、直接のヘッダー取得は制限される場合があります
-      // ここでは代替手段として利用可能な情報を表示
-      const response = await fetch(url, {
-        method: 'HEAD',
-        mode: 'cors'
-      }).catch(() => {
-        // CORS エラーの場合は GET リクエストを試行
-        return fetch(url, {
-          method: 'GET',
-          mode: 'no-cors'
-        })
+      // サーバーサイドのAPIを使用してヘッダー情報を取得
+      const response = await fetch('/api/headers', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ url })
       })
 
-      const endTime = Date.now()
-      const responseTime = endTime - startTime
+      const data = await response.json()
 
-      const headers: HeaderInfo[] = []
-
-      // レスポンスヘッダーを解析
-      if (response.headers) {
-        response.headers.forEach((value, name) => {
-          headers.push({
-            name,
-            value,
-            description: getHeaderDescription(name),
-            type: getHeaderType(name)
-          })
-        })
+      if (!response.ok) {
+        setError(data.error || 'リクエストに失敗しました')
+        return
       }
 
-      // ヘッダーが取得できない場合のメッセージ用ヘッダー
-      if (headers.length === 0) {
-        headers.push({
-          name: 'CORS制限',
-          value: 'ブラウザのCORS制限により、一部のヘッダー情報が取得できません',
-          description: 'サーバー側でCORSが許可されていない場合、ヘッダー情報の取得が制限されます',
-          type: 'other'
-        })
-      }
+      // ヘッダー情報を適切な形式に変換
+      const headers: HeaderInfo[] = data.headers.map((header: { name: string; value: string }) => ({
+        name: header.name,
+        value: header.value,
+        description: getHeaderDescription(header.name),
+        type: getHeaderType(header.name)
+      }))
 
       setResult({
-        url,
-        status: response.status || 0,
-        statusText: response.statusText || 'Unknown',
+        url: data.url,
+        status: data.status,
+        statusText: data.statusText,
         headers,
-        timestamp: new Date().toISOString(),
-        responseTime
+        timestamp: data.timestamp,
+        responseTime: data.responseTime
       })
 
     } catch (err) {
@@ -493,9 +475,9 @@ export default function HttpHeaderViewerTool() {
               <div>
                 <h4 className="font-semibold mb-2">注意事項</h4>
                 <ul className="list-disc list-inside space-y-1">
-                  <li>CORS制限により、一部のヘッダー情報が取得できない場合があります</li>
-                  <li>ブラウザのセキュリティ設定により制限される場合があります</li>
-                  <li>すべてのWebサイトが解析できるとは限りません</li>
+                  <li>サーバーサイドでリクエストを処理するため、CORS制限を回避できます</li>
+                  <li>一部のWebサイトではアクセス制限やファイアウォールにより取得できない場合があります</li>
+                  <li>リクエストタイムアウトは10秒に設定されています</li>
                 </ul>
               </div>
             </div>

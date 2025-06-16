@@ -12,7 +12,7 @@ export const toolsConfig: ToolConfig = {
           name: "文字数計測ツール",
           description: "文字数、行数、バイト数などを計測",
           category: "text",
-          icon: "Calculator",
+          icon: "AlignLeft",
           path: "/tools/character-counter"
         },
         {
@@ -76,7 +76,7 @@ export const toolsConfig: ToolConfig = {
           name: "かな・ローマ字変換",
           description: "ひらがな・カタカナとローマ字の相互変換",
           category: "text",
-          icon: "Languages",
+          icon: "Spellcheck",
           path: "/tools/kana-romaji"
         }
       ]
@@ -146,7 +146,7 @@ export const toolsConfig: ToolConfig = {
           name: "画像形式変換",
           description: "JPEG・PNG・WebP間の画像形式変換",
           category: "image",
-          icon: "ArrowLeftRight",
+          icon: "RefreshCw",
           path: "/tools/image-convert"
         },
         {
@@ -162,7 +162,7 @@ export const toolsConfig: ToolConfig = {
           name: "Favicon生成",
           description: "画像からFaviconを生成",
           category: "image",
-          icon: "Globe",
+          icon: "Bookmark",
           path: "/tools/favicon-generator"
         }
       ]
@@ -172,14 +172,6 @@ export const toolsConfig: ToolConfig = {
       name: "日付・時間",
       icon: "Calendar",
       tools: [
-        {
-          id: "age-calculator",
-          name: "満年齢計算機",
-          description: "生年月日から満年齢を計算",
-          category: "datetime",
-          icon: "Birthday",
-          path: "/tools/age-calculator"
-        },
         {
           id: "japanese-calendar",
           name: "和暦西暦変換",
@@ -201,7 +193,7 @@ export const toolsConfig: ToolConfig = {
           name: "曜日リスト化ツール",
           description: "指定曜日の日付リストを生成",
           category: "datetime",
-          icon: "CalendarDays",
+          icon: "List",
           path: "/tools/weekday-list"
         },
         {
@@ -232,7 +224,7 @@ export const toolsConfig: ToolConfig = {
           name: "JsonYaml変換",
           description: "JSONとYAMLの相互変換",
           category: "dev",
-          icon: "FileText",
+          icon: "FileCode",
           path: "/tools/json-yaml"
         },
         {
@@ -248,7 +240,7 @@ export const toolsConfig: ToolConfig = {
           name: "cronパーサー",
           description: "cron式を解析・説明",
           category: "dev",
-          icon: "Search",
+          icon: "Clock4",
           path: "/tools/cron-parser"
         },
         {
@@ -256,7 +248,7 @@ export const toolsConfig: ToolConfig = {
           name: "UUID生成",
           description: "UUID v1、v4を生成",
           category: "dev",
-          icon: "Hash",
+          icon: "Fingerprint",
           path: "/tools/uuid-generator"
         },
         {
@@ -264,7 +256,7 @@ export const toolsConfig: ToolConfig = {
           name: "進数変換",
           description: "2進数・8進数・10進数・16進数の相互変換",
           category: "dev",
-          icon: "Hash",
+          icon: "Binary",
           path: "/tools/number-base-converter"
         },
         {
@@ -272,7 +264,7 @@ export const toolsConfig: ToolConfig = {
           name: "正規表現テスター",
           description: "正規表現のテスト・検証ツール（カラーハイライト付き）",
           category: "dev",
-          icon: "Search",
+          icon: "TestTube",
           path: "/tools/regex-tester"
         },
         {
@@ -299,38 +291,6 @@ export const toolsConfig: ToolConfig = {
           icon: "Eye",
           path: "/tools/markdown-preview"
         },
-        {
-          id: "http-header-viewer",
-          name: "HTTPヘッダービューアー",
-          description: "WebサイトのHTTPレスポンスヘッダーとクライアント情報を分析・表示",
-          category: "dev",
-          icon: "Globe",
-          path: "/tools/http-header-viewer"
-        },
-        {
-          id: "dns-checker",
-          name: "DNSレコードチェッカー",
-          description: "ドメインのDNSレコードを検索・確認するツール",
-          category: "dev",
-          icon: "Search",
-          path: "/tools/dns-checker"
-        },
-        {
-          id: "dns-generator",
-          name: "DNSレコード生成",
-          description: "DNSレコード設定のテンプレートを生成",
-          category: "dev",
-          icon: "FileText",
-          path: "/tools/dns-generator"
-        },
-        {
-          id: "cidr-calculator",
-          name: "CIDR計算機",
-          description: "CIDR記法のIPアドレス範囲計算・サブネット分析",
-          category: "dev",
-          icon: "Network",
-          path: "/tools/cidr-calculator"
-        }
       ]
     },
     {
@@ -412,9 +372,150 @@ export const toolsConfig: ToolConfig = {
       ]
     },
     {
+      id: "calculator",
+      name: "計算機",
+      icon: "Calculator",
+      tools: [
+        {
+          id: "age-calculator",
+          name: "満年齢計算機",
+          description: "生年月日から満年齢を計算",
+          category: "calculator",
+          icon: "Birthday",
+          path: "/tools/age-calculator"
+        },
+        {
+          id: "bmi-calculator",
+          name: "BMI計算機",
+          description: "身長・体重からBMI（Body Mass Index）を計算",
+          category: "calculator",
+          icon: "Scale",
+          path: "/tools/bmi-calculator"
+        },
+        {
+          id: "transfer-calculator",
+          name: "転送速度計算器",
+          description: "データ転送時間を計算",
+          category: "calculator",
+          icon: "Gauge",
+          path: "/tools/transfer-calculator"
+        },
+        {
+          id: "microwave-calculator",
+          name: "電子レンジ時間計算器",
+          description: "ワット数に応じた加熱時間を計算",
+          category: "calculator",
+          icon: "Zap",
+          path: "/tools/microwave-calculator"
+        },
+        {
+          id: "unit-converter",
+          name: "単位変換ツール",
+          description: "長さ・重さ・温度の単位変換",
+          category: "calculator",
+          icon: "ArrowUpDown",
+          path: "/tools/unit-converter"
+        },
+        {
+          id: "fraction-percentage-converter",
+          name: "分数・小数・パーセント変換",
+          description: "分数・小数・パーセントの相互変換ツール",
+          category: "calculator",
+          icon: "Percent",
+          path: "/tools/fraction-percentage-converter"
+        },
+        {
+          id: "statistics-calculator",
+          name: "統計計算機",
+          description: "平均・分散・標準偏差など基本統計量の計算ツール",
+          category: "calculator",
+          icon: "TrendingUp",
+          path: "/tools/statistics-calculator"
+        }
+      ]
+    },
+    {
+      id: "finance",
+      name: "金融・価格",
+      icon: "DollarSign",
+      tools: [
+        {
+          id: "discount-calculator",
+          name: "商品値引き計算機",
+          description: "割引率・税込価格・ポイント還元を含む商品価格計算ツール",
+          category: "finance",
+          icon: "Percent",
+          path: "/tools/discount-calculator"
+        },
+        {
+          id: "loan-calculator",
+          name: "ローン返済・利息計算機",
+          description: "住宅ローン・自動車ローンなどの返済計画と利息計算ツール",
+          category: "finance",
+          icon: "PiggyBank",
+          path: "/tools/loan-calculator"
+        },
+        {
+          id: "tax-calculator",
+          name: "税金計算機",
+          description: "所得税・住民税・社会保険料の計算ツール",
+          category: "finance",
+          icon: "Receipt",
+          path: "/tools/tax-calculator"
+        }
+      ]
+    },
+    {
+      id: "network",
+      name: "ネットワーク",
+      icon: "Network",
+      tools: [
+        {
+          id: "ip-address",
+          name: "IPアドレス確認",
+          description: "アクセス元IPアドレスを表示",
+          category: "network",
+          icon: "MapPin",
+          path: "/tools/ip-address"
+        },
+        {
+          id: "http-header-viewer",
+          name: "HTTPヘッダービューアー",
+          description: "WebサイトのHTTPレスポンスヘッダーとクライアント情報を分析・表示",
+          category: "network",
+          icon: "FileSearch",
+          path: "/tools/http-header-viewer"
+        },
+        {
+          id: "dns-checker",
+          name: "DNSレコードチェッカー",
+          description: "ドメインのDNSレコードを検索・確認するツール",
+          category: "network",
+          icon: "Search",
+          path: "/tools/dns-checker"
+        },
+        {
+          id: "dns-generator",
+          name: "DNSレコード生成",
+          description: "DNSレコード設定のテンプレートを生成",
+          category: "network",
+          icon: "FileText",
+          path: "/tools/dns-generator"
+        },
+        {
+          id: "cidr-calculator",
+          name: "CIDR計算機",
+          description: "CIDR記法のIPアドレス範囲計算・サブネット分析",
+          category: "network",
+          icon: "Network",
+          path: "/tools/cidr-calculator"
+        }
+      ]
+    },
+    {
       id: "utility",
       name: "ユーティリティ",
-      icon: "Settings",
+      icon: "Wrench",
       tools: [
         {
           id: "amazon-link",
@@ -425,92 +526,12 @@ export const toolsConfig: ToolConfig = {
           path: "/tools/amazon-link"
         },
         {
-          id: "ip-address",
-          name: "IPアドレス確認",
-          description: "アクセス元IPアドレスを表示",
-          category: "utility",
-          icon: "Globe",
-          path: "/tools/ip-address"
-        },
-        {
           id: "exif-viewer",
           name: "EXIF確認ツール",
           description: "画像のEXIF情報を表示",
           category: "utility",
           icon: "Image",
           path: "/tools/exif-viewer"
-        },
-        {
-          id: "transfer-calculator",
-          name: "転送速度計算器",
-          description: "データ転送時間を計算",
-          category: "utility",
-          icon: "Gauge",
-          path: "/tools/transfer-calculator"
-        },
-        {
-          id: "microwave-calculator",
-          name: "電子レンジ時間計算器",
-          description: "ワット数に応じた加熱時間を計算",
-          category: "utility",
-          icon: "Zap",
-          path: "/tools/microwave-calculator"
-        },
-        {
-          id: "unit-converter",
-          name: "単位変換ツール",
-          description: "長さ・重さ・温度の単位変換",
-          category: "utility",
-          icon: "Calculator",
-          path: "/tools/unit-converter"
-        },
-        {
-          id: "bmi-calculator",
-          name: "BMI計算機",
-          description: "身長・体重からBMI（Body Mass Index）を計算",
-          category: "utility",
-          icon: "Activity",
-          path: "/tools/bmi-calculator"
-        },
-        {
-          id: "fraction-percentage-converter",
-          name: "分数・小数・パーセント変換",
-          description: "分数・小数・パーセントの相互変換ツール",
-          category: "utility",
-          icon: "Calculator",
-          path: "/tools/fraction-percentage-converter"
-        },
-        {
-          id: "discount-calculator",
-          name: "商品値引き計算機",
-          description: "割引率・税込価格・ポイント還元を含む商品価格計算ツール",
-          category: "utility",
-          icon: "Percent",
-          path: "/tools/discount-calculator"
-        },
-        {
-          id: "loan-calculator",
-          name: "ローン返済・利息計算機",
-          description: "住宅ローン・自動車ローンなどの返済計画と利息計算ツール",
-          category: "utility",
-          icon: "PiggyBank",
-          path: "/tools/loan-calculator"
-        },
-        {
-          id: "tax-calculator",
-          name: "税金計算機",
-          description: "所得税・住民税・社会保険料の計算ツール",
-          category: "utility",
-          icon: "Calculator",
-          path: "/tools/tax-calculator"
-        },
-        {
-          id: "statistics-calculator",
-          name: "統計計算機",
-          description: "平均・分散・標準偏差など基本統計量の計算ツール",
-          category: "utility",
-          icon: "TrendingUp",
-          path: "/tools/statistics-calculator"
         }
       ]
     }

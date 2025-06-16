@@ -68,8 +68,20 @@ export const competitorKeywords = {
     'レクリエーション', 'イベント', '抽選', '点数管理'
   ],
   utility: [
-    'Amazonリンク', 'URL短縮', 'IPアドレス', 'EXIF確認', 
-    '転送速度', '電子レンジ時間', 'ユーティリティ', 'オンラインツール'
+    'Amazonリンク', 'URL短縮', 'EXIF確認', 
+    'ユーティリティ', 'オンラインツール'
+  ],
+  calculator: [
+    '年齢計算', '満年齢', 'BMI計算', '単位変換', '転送速度計算',
+    '電子レンジ時間', '統計計算', '分数変換', '計算機ツール'
+  ],
+  finance: [
+    'ローン計算', '税金計算', '所得税', '住民税', '商品値引き',
+    '割引計算', '利息計算', '金融計算', '価格計算'
+  ],
+  network: [
+    'DNS設定', 'DNSレコード', 'CIDR計算', 'サブネット計算',
+    'IPアドレス', 'HTTPヘッダー', 'ネットワーク診断'
   ]
 }
 
@@ -378,8 +390,8 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
       'CORS', 'CSP', 'HSTS', 'X-Frame-Options', 'キャッシュ制御',
       'サーバー情報', 'ブラウザ情報', 'デバッグ', '無料', 'オンライン'
     ],
-    competitorKeywords: competitorKeywords.dev,
-    category: 'dev',
+    competitorKeywords: competitorKeywords.network,
+    category: 'network',
     schemaType: 'WebApplication'
   },
   'dns-checker': {
@@ -390,8 +402,8 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
       'CNAMEレコード', 'TXTレコード', 'NSレコード', 'DNS解析',
       'ドメイン設定', 'メールサーバー', 'ネームサーバー', '無料', 'オンライン'
     ],
-    competitorKeywords: competitorKeywords.dev,
-    category: 'dev',
+    competitorKeywords: competitorKeywords.network,
+    category: 'network',
     schemaType: 'WebApplication'
   },
   'qr-generator': {
@@ -426,8 +438,8 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
       '元利均等', '元金均等', '月返済額', '総利息', '返済計画',
       '金利計算', 'ローンシミュレーション', '無料', 'オンライン'
     ],
-    competitorKeywords: competitorKeywords.utility,
-    category: 'utility',
+    competitorKeywords: competitorKeywords.finance,
+    category: 'finance',
     schemaType: 'WebApplication'
   },
   'tax-calculator': {
@@ -438,8 +450,8 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
       '配偶者控除', '扶養控除', '税負担', '年収計算', '給与計算',
       '源泉徴収', '確定申告', '無料', 'オンライン'
     ],
-    competitorKeywords: competitorKeywords.utility,
-    category: 'utility',
+    competitorKeywords: competitorKeywords.finance,
+    category: 'finance',
     schemaType: 'WebApplication'
   },
   'statistics-calculator': {
