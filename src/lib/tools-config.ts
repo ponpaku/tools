@@ -81,7 +81,7 @@ export const toolsConfig: ToolConfig = {
         {
           id: "base64",
           name: "Base64エンコーダーデコーダ",
-          description: "Base64形式のエンコード・デコード",
+          description: "テキスト・画像・ファイルのBase64エンコード・デコード",
           category: "encoding",
           icon: "Key",
           path: "/tools/base64"
@@ -243,6 +243,22 @@ export const toolsConfig: ToolConfig = {
           category: "dev",
           icon: "Eye",
           path: "/tools/markdown-preview"
+        },
+        {
+          id: "http-header-viewer",
+          name: "HTTPヘッダービューアー",
+          description: "WebサイトのHTTPレスポンスヘッダーとクライアント情報を分析・表示",
+          category: "dev",
+          icon: "Globe",
+          path: "/tools/http-header-viewer"
+        },
+        {
+          id: "dns-checker",
+          name: "DNSレコードチェッカー",
+          description: "ドメインのDNSレコードを検索・確認するツール",
+          category: "dev",
+          icon: "Search",
+          path: "/tools/dns-checker"
         }
       ]
     },

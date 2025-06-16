@@ -20,6 +20,7 @@ export default function Base64Tool() {
   const [fileType, setFileType] = useState('')
   const [fileSize, setFileSize] = useState(0)
   const [activeTab, setActiveTab] = useState('text')
+  const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
   const processText = () => {
@@ -51,10 +52,7 @@ export default function Base64Tool() {
     setError('')
   }
 
-  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const file = event.target.files?.[0]
-    if (!file) return
-
+  const processFile = (file: File) => {
     setError('')
     setFileName(file.name)
     setFileType(file.type)
@@ -66,14 +64,38 @@ export default function Base64Tool() {
       if (result) {
         const base64 = result.split(',')[1] || result
         setFileBase64(base64)
-        setInputText(base64)
-        setActiveTab('text')
       }
     }
     reader.onerror = () => {
       setError('ファイルの読み込みに失敗しました')
     }
     reader.readAsDataURL(file)
+  }
+
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+    processFile(file)
+  }
+
+  const handleDrop = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    setIsDragging(false)
+    
+    const files = Array.from(event.dataTransfer.files)
+    if (files.length > 0) {
+      processFile(files[0])
+    }
+  }
+
+  const handleDragOver = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    setIsDragging(true)
+  }
+
+  const handleDragLeave = (event: React.DragEvent<HTMLDivElement>) => {
+    event.preventDefault()
+    setIsDragging(false)
   }
 
   const downloadFile = () => {
@@ -141,7 +163,16 @@ export default function Base64Tool() {
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                  <div 
+                    className={`border-2 border-dashed rounded-lg p-6 text-center transition-colors ${
+                      isDragging 
+                        ? 'border-blue-400 bg-blue-50' 
+                        : 'border-gray-300 hover:border-gray-400'
+                    }`}
+                    onDrop={handleDrop}
+                    onDragOver={handleDragOver}
+                    onDragLeave={handleDragLeave}
+                  >
                     <Input
                       ref={fileInputRef}
                       type="file"
@@ -151,9 +182,16 @@ export default function Base64Tool() {
                     />
                     <label htmlFor="file-upload" className="cursor-pointer">
                       <div className="space-y-2">
-                        <Upload className="w-12 h-12 mx-auto text-gray-400" />
-                        <p className="text-sm text-gray-600">
-                          クリックしてファイルを選択
+                        <Upload className={`w-12 h-12 mx-auto ${
+                          isDragging ? 'text-blue-500' : 'text-gray-400'
+                        }`} />
+                        <p className={`text-sm ${
+                          isDragging ? 'text-blue-600' : 'text-gray-600'
+                        }`}>
+                          {isDragging 
+                            ? 'ファイルをここにドロップ' 
+                            : 'クリックしてファイルを選択またはドラッグ&ドロップ'
+                          }
                         </p>
                         <p className="text-xs text-gray-500">
                           画像、文書、その他のファイルをBase64に変換

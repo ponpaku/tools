@@ -364,6 +364,30 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     category: 'dev',
     schemaType: 'WebApplication'
   },
+  'http-header-viewer': {
+    title: 'HTTPヘッダービューアー【無料・セキュリティ確認・Web解析】',
+    description: 'WebサイトのHTTPレスポンスヘッダーとクライアント情報を詳細分析。セキュリティヘッダー、キャッシュ設定、サーバー情報を確認できる無料ツール。',
+    keywords: [
+      'HTTPヘッダー', 'レスポンスヘッダー', 'セキュリティヘッダー', 'Web解析',
+      'CORS', 'CSP', 'HSTS', 'X-Frame-Options', 'キャッシュ制御',
+      'サーバー情報', 'ブラウザ情報', 'デバッグ', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
+  },
+  'dns-checker': {
+    title: 'DNSレコードチェッカー【無料・高速・全タイプ対応】',
+    description: 'ドメインのDNSレコード（A、AAAA、CNAME、MX、TXT、NS等）を高速検索・確認。DNS over HTTPSで安全に解析できる無料ツール。',
+    keywords: [
+      'DNS', 'DNSレコード', 'ドメイン確認', 'Aレコード', 'MXレコード',
+      'CNAMEレコード', 'TXTレコード', 'NSレコード', 'DNS解析',
+      'ドメイン設定', 'メールサーバー', 'ネームサーバー', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
+  },
   'qr-generator': {
     title: 'QRコード生成ツール【無料・高品質・カスタマイズ対応】',
     description: 'テキスト・URL・連絡先情報から高品質なQRコードを無料生成。サイズ調整、エラー訂正レベル設定対応。印刷・デジタル利用に最適。',

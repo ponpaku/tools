@@ -294,7 +294,7 @@ ${result.advice}
 		return messages[animationStep] || messages[0];
 	};
 
-	const hasResultToday = result && result.date === new Date().toDateString();
+	const hasResultToday = Boolean(result && result.date === new Date().toDateString());
 
 	return (
 		<ToolLayout
@@ -352,7 +352,7 @@ ${result.advice}
 						{hasResultToday ? (
 							<div className="space-y-2">
 								<p className="text-sm text-gray-600">
-									本日の{result.type}は既に実行済みです。
+									本日の{result?.type}は既に実行済みです。
 								</p>
 								<Button
 									onClick={resetFortune}
