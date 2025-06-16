@@ -266,6 +266,14 @@ export const toolsConfig: ToolConfig = {
           category: "generator",
           icon: "Dices",
           path: "/tools/random-string"
+        },
+        {
+          id: "fortune-generator",
+          name: "運勢・診断生成器",
+          description: "占い・おみくじ・診断結果をランダム生成",
+          category: "generator",
+          icon: "Sparkles",
+          path: "/tools/fortune-generator"
         }
       ]
     },
@@ -392,6 +400,30 @@ export const toolsConfig: ToolConfig = {
           category: "utility",
           icon: "Percent",
           path: "/tools/discount-calculator"
+        },
+        {
+          id: "loan-calculator",
+          name: "ローン返済・利息計算機",
+          description: "住宅ローン・自動車ローンなどの返済計画と利息計算ツール",
+          category: "utility",
+          icon: "PiggyBank",
+          path: "/tools/loan-calculator"
+        },
+        {
+          id: "tax-calculator",
+          name: "税金計算機",
+          description: "所得税・住民税・社会保険料の計算ツール",
+          category: "utility",
+          icon: "Calculator",
+          path: "/tools/tax-calculator"
+        },
+        {
+          id: "statistics-calculator",
+          name: "統計計算機",
+          description: "平均・分散・標準偏差など基本統計量の計算ツール",
+          category: "utility",
+          icon: "TrendingUp",
+          path: "/tools/statistics-calculator"
         }
       ]
     }

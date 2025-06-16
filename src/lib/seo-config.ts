@@ -182,6 +182,28 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     competitorKeywords: competitorKeywords.encoding,
     category: 'encoding'
   },
+  'line-break-converter': {
+    title: '改行コード変換ツール【Windows・Unix・Mac対応・無料】',
+    description: 'Windows・Unix・Mac間の改行コードを相互変換する無料ツール。CRLF・LF・CR形式に対応。ファイル転送、クロスプラットフォーム開発に最適。',
+    keywords: [
+      '改行コード変換', 'CRLF', 'LF', 'CR', 'Windows', 'Unix', 'Mac',
+      'ファイル転送', 'クロスプラットフォーム', 'テキスト変換', '文字コード',
+      '開発', 'プログラミング', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.text,
+    category: 'text'
+  },
+  'emoji-converter': {
+    title: 'Emojiコード変換ツール【Unicode・HTML・CSS・JavaScript対応】',
+    description: '絵文字とUnicodeコード・HTML Entity・CSS・JavaScript形式を相互変換。プログラミング、Web開発、文字コード処理に最適な無料ツール。',
+    keywords: [
+      'Emoji変換', '絵文字変換', 'Unicode', 'HTML Entity', 'CSS', 'JavaScript',
+      '文字コード', 'プログラミング', 'Web開発', '絵文字コード',
+      'エンコーディング', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.encoding,
+    category: 'encoding'
+  },
   // 日付・時間ツール
   'age-calculator': {
     title: '満年齢計算機【無料・正確・生年月日から自動計算】',
@@ -294,6 +316,54 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     competitorKeywords: competitorKeywords.dev,
     category: 'dev'
   },
+  'regex-tester': {
+    title: '正規表現テスター【無料・カラーハイライト・マッチ検証】',
+    description: '正規表現のテスト・検証を行う無料ツール。カラーハイライト付きでマッチ結果を視覚的に確認。プログラミング、文字列処理、データ検索に最適。',
+    keywords: [
+      '正規表現', 'regex', 'regexp', '正規表現テスター', 'マッチング',
+      'パターンマッチ', 'プログラミング', '文字列処理', 'データ検索',
+      'カラーハイライト', '検証', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
+  },
+  'color-converter': {
+    title: 'カラーコード変換ツール【HEX・RGB・HSL・HSV・CMYK】',
+    description: 'HEX・RGB・HSL・HSV・CMYK形式の色変換を瞬時に実行。Web開発、デザイン、印刷物制作に最適な無料カラーコード変換ツール。',
+    keywords: [
+      'カラーコード', '色変換', 'HEX', 'RGB', 'HSL', 'HSV', 'CMYK',
+      'Web開発', 'デザイン', '印刷', 'カラーパレット',
+      '色彩', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
+  },
+  'jwt-decoder': {
+    title: 'JWT・PASETOデコーダ【無料・JSON Web Token解析】',
+    description: 'JWT（JSON Web Token）とPASETOの解析・デコードを行う無料ツール。ヘッダー・ペイロード・署名を詳細表示。API開発、認証トークン検証に最適。',
+    keywords: [
+      'JWT', 'JSON Web Token', 'PASETO', 'デコード', 'トークン解析',
+      'API開発', '認証', 'セキュリティ', 'ヘッダー', 'ペイロード',
+      '署名検証', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
+  },
+  'markdown-preview': {
+    title: 'Markdownプレビューツール【無料・リアルタイム・変換】',
+    description: 'Markdownテキストをリアルタイムでプレビュー・HTML変換する無料ツール。文書作成、GitHub、技術ドキュメント執筆に最適。',
+    keywords: [
+      'Markdown', 'マークダウン', 'プレビュー', 'HTML変換', 'リアルタイム',
+      '文書作成', 'GitHub', '技術ドキュメント', 'テキスト', 'フォーマット',
+      '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
+  },
   'qr-generator': {
     title: 'QRコード生成ツール【無料・高品質・カスタマイズ対応】',
     description: 'テキスト・URL・連絡先情報から高品質なQRコードを無料生成。サイズ調整、エラー訂正レベル設定対応。印刷・デジタル利用に最適。',
@@ -304,6 +374,115 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     ],
     competitorKeywords: competitorKeywords.generator,
     category: 'generator',
+    schemaType: 'WebApplication'
+  },
+  'random-string': {
+    title: 'ランダム文字列生成ツール【パスワード・トークン・無料】',
+    description: 'セキュアなランダム文字列・パスワード・トークンを瞬時に生成。英数字・記号・長さ指定対応。セキュリティ、開発、テストに最適な無料ツール。',
+    keywords: [
+      'ランダム文字列', 'パスワード生成', 'トークン生成', 'セキュア',
+      '英数字', '記号', 'セキュリティ', '開発', 'テスト',
+      'API Key', '一意文字列', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.generator,
+    category: 'generator',
+    schemaType: 'WebApplication'
+  },
+  'loan-calculator': {
+    title: 'ローン返済・利息計算機【住宅ローン・自動車ローン・無料】',
+    description: '住宅ローン・自動車ローンの返済計画を詳細計算。元利均等・元金均等返済に対応。月々の返済額、総利息額を瞬時に算出する無料ツール。',
+    keywords: [
+      'ローン計算', '住宅ローン', '自動車ローン', '返済計算', '利息計算',
+      '元利均等', '元金均等', '月返済額', '総利息', '返済計画',
+      '金利計算', 'ローンシミュレーション', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.utility,
+    category: 'utility',
+    schemaType: 'WebApplication'
+  },
+  'tax-calculator': {
+    title: '税金計算機【所得税・住民税・社会保険料・手取り計算】',
+    description: '年収から所得税・住民税・社会保険料を自動計算。配偶者控除・扶養控除対応。手取り収入と税負担率を詳細表示する無料ツール。',
+    keywords: [
+      '税金計算', '所得税', '住民税', '社会保険料', '手取り計算',
+      '配偶者控除', '扶養控除', '税負担', '年収計算', '給与計算',
+      '源泉徴収', '確定申告', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.utility,
+    category: 'utility',
+    schemaType: 'WebApplication'
+  },
+  'statistics-calculator': {
+    title: '統計計算機【平均・分散・標準偏差・基本統計量】',
+    description: '数値データの基本統計量を自動計算。平均・中央値・分散・標準偏差・四分位数を瞬時に算出。データ分析・統計処理に最適な無料ツール。',
+    keywords: [
+      '統計計算', '基本統計量', '平均', '中央値', '分散', '標準偏差',
+      '四分位数', 'データ分析', '統計処理', '数値解析',
+      '記述統計', '統計学', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.utility,
+    category: 'utility',
+    schemaType: 'WebApplication'
+  },
+  'fortune-generator': {
+    title: '運勢・診断生成器【おみくじ・タロット・血液型占い】',
+    description: 'おみくじ・タロット・血液型・動物占いをランダム生成。ラッキーアイテム・カラー・ナンバー付き。娯楽・話題作りに最適な無料占いツール。',
+    keywords: [
+      '運勢', '占い', 'おみくじ', 'タロット', '血液型占い', '動物占い',
+      'ラッキーアイテム', 'ラッキーカラー', '診断', '娯楽',
+      '話題作り', 'ランダム', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.generator,
+    category: 'generator',
+    schemaType: 'WebApplication'
+  },
+  // ユーティリティツール
+  'fraction-percentage-converter': {
+    title: '分数・小数・パーセント変換ツール【無料・相互変換】',
+    description: '分数・小数・パーセントを瞬時に相互変換する無料ツール。数学、統計、教育、ビジネス計算に最適。約分・通分機能付き。',
+    keywords: [
+      '分数変換', '小数変換', 'パーセント変換', '相互変換', '約分',
+      '通分', '数学', '統計', '教育', 'ビジネス計算',
+      '割合計算', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.utility,
+    category: 'utility',
+    schemaType: 'WebApplication'
+  },
+  'discount-calculator': {
+    title: '商品値引き計算機【割引率・税込・ポイント還元】',
+    description: '商品の割引率・税込価格・ポイント還元を含む総合価格計算ツール。セール価格、実質負担額を瞬時に算出する無料計算機。',
+    keywords: [
+      '値引き計算', '割引計算', '商品価格', 'セール価格', '税込価格',
+      'ポイント還元', '実質負担額', 'ショッピング', '節約',
+      '価格比較', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.utility,
+    category: 'utility',
+    schemaType: 'WebApplication'
+  },
+  'unit-converter': {
+    title: '単位変換ツール【長さ・重さ・温度・無料】',
+    description: '長さ・重さ・温度の単位変換を瞬時に実行する無料ツール。メートル法・ヤード法・華氏・摂氏など多彩な単位に対応。',
+    keywords: [
+      '単位変換', '長さ変換', '重さ変換', '温度変換', 'メートル法',
+      'ヤード法', '華氏', '摂氏', 'インチ', 'フィート',
+      'キログラム', 'ポンド', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.utility,
+    category: 'utility',
+    schemaType: 'WebApplication'
+  },
+  'bmi-calculator': {
+    title: 'BMI計算機【Body Mass Index・肥満度判定・無料】',
+    description: '身長・体重からBMI（Body Mass Index）を計算し、肥満度を判定する無料ツール。健康管理、ダイエット、体重管理に最適。',
+    keywords: [
+      'BMI計算', 'Body Mass Index', '肥満度', '体重管理', 'ダイエット',
+      '健康管理', '身長', '体重', '標準体重', '理想体重',
+      'メタボ', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.utility,
+    category: 'utility',
     schemaType: 'WebApplication'
   }
 }

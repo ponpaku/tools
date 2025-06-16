@@ -49,6 +49,10 @@ export default function HomePage() {
 		);
 	}, []);
 
+	const totalToolCount = useMemo(() => {
+		return toolsConfig.categories.reduce((total, category) => total + category.tools.length, 0);
+	}, []);
+
 	const filteredTools = useMemo(() => {
 		if (!searchQuery.trim()) return allTools;
 
@@ -171,6 +175,22 @@ export default function HomePage() {
 							<br />
 							ブラウザ上ですぐに使える実用的なツールを無料で提供しています
 						</p>
+
+						{/* ツール数統計 */}
+						<div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-2xl p-6 mb-8 max-w-md mx-auto">
+							<div className="text-center">
+								<div className="text-3xl mb-2">🔧</div>
+								<div className="text-3xl font-bold text-blue-600 mb-1">
+									{totalToolCount}個
+								</div>
+								<div className="text-lg font-semibold text-gray-700 mb-1">
+									のツールが利用可能
+								</div>
+								<div className="text-sm text-gray-500">
+									すべて無料でご利用いただけます
+								</div>
+							</div>
+						</div>
 
 						{/* 検索バー */}
 						<div className="relative max-w-2xl mx-auto mb-8">

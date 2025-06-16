@@ -1,17 +1,26 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { ToolLayout, CopyButton } from '@/components/layout/tool-layout'
 import { Textarea } from '@/components/ui/textarea'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Input } from '@/components/ui/input'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
+import { Upload, Download, Image, FileText } from 'lucide-react'
 
 export default function Base64Tool() {
   const [inputText, setInputText] = useState('')
   const [outputText, setOutputText] = useState('')
   const [mode, setMode] = useState<'encode' | 'decode'>('encode')
   const [error, setError] = useState('')
+  const [fileBase64, setFileBase64] = useState('')
+  const [fileName, setFileName] = useState('')
+  const [fileType, setFileType] = useState('')
+  const [fileSize, setFileSize] = useState(0)
+  const [activeTab, setActiveTab] = useState('text')
+  const fileInputRef = useRef<HTMLInputElement>(null)
 
   const processText = () => {
     setError('')
@@ -42,13 +51,194 @@ export default function Base64Tool() {
     setError('')
   }
 
+  const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0]
+    if (!file) return
+
+    setError('')
+    setFileName(file.name)
+    setFileType(file.type)
+    setFileSize(file.size)
+
+    const reader = new FileReader()
+    reader.onload = (e) => {
+      const result = e.target?.result as string
+      if (result) {
+        const base64 = result.split(',')[1] || result
+        setFileBase64(base64)
+        setInputText(base64)
+        setActiveTab('text')
+      }
+    }
+    reader.onerror = () => {
+      setError('ファイルの読み込みに失敗しました')
+    }
+    reader.readAsDataURL(file)
+  }
+
+  const downloadFile = () => {
+    if (!fileBase64 || !fileName) return
+
+    try {
+      const mimeType = fileType || 'application/octet-stream'
+      const dataUrl = `data:${mimeType};base64,${fileBase64}`
+      
+      const link = document.createElement('a')
+      link.href = dataUrl
+      link.download = fileName
+      document.body.appendChild(link)
+      link.click()
+      document.body.removeChild(link)
+    } catch (err) {
+      setError('ファイルのダウンロードに失敗しました')
+    }
+  }
+
+  const clearFile = () => {
+    setFileBase64('')
+    setFileName('')
+    setFileType('')
+    setFileSize(0)
+    if (fileInputRef.current) {
+      fileInputRef.current.value = ''
+    }
+  }
+
+  const formatFileSize = (bytes: number) => {
+    if (bytes === 0) return '0 Bytes'
+    const k = 1024
+    const sizes = ['Bytes', 'KB', 'MB', 'GB']
+    const i = Math.floor(Math.log(bytes) / Math.log(k))
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
+  }
+
+  const isImage = (type: string) => {
+    return type.startsWith('image/')
+  }
+
   return (
     <ToolLayout
       title="Base64エンコーダーデコーダ"
-      description="Base64形式のエンコード・デコードを行います"
+      description="テキスト・画像・ファイルのBase64エンコード・デコードを行います"
     >
       <div className="space-y-6">
-        <div className="flex items-center gap-4">
+        <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
+          <TabsList className="grid w-full grid-cols-2">
+            <TabsTrigger value="text" className="flex items-center gap-2">
+              <FileText className="w-4 h-4" />
+              テキスト
+            </TabsTrigger>
+            <TabsTrigger value="file" className="flex items-center gap-2">
+              <Upload className="w-4 h-4" />
+              ファイル
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="file" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>ファイルアップロード</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <div className="space-y-4">
+                  <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
+                    <Input
+                      ref={fileInputRef}
+                      type="file"
+                      onChange={handleFileUpload}
+                      className="hidden"
+                      id="file-upload"
+                    />
+                    <label htmlFor="file-upload" className="cursor-pointer">
+                      <div className="space-y-2">
+                        <Upload className="w-12 h-12 mx-auto text-gray-400" />
+                        <p className="text-sm text-gray-600">
+                          クリックしてファイルを選択
+                        </p>
+                        <p className="text-xs text-gray-500">
+                          画像、文書、その他のファイルをBase64に変換
+                        </p>
+                      </div>
+                    </label>
+                  </div>
+
+                  {fileName && (
+                    <Card className="bg-gray-50">
+                      <CardContent className="p-4">
+                        <div className="flex items-center justify-between">
+                          <div className="space-y-1">
+                            <p className="font-medium">{fileName}</p>
+                            <p className="text-sm text-gray-600">
+                              {fileType || '不明'} • {formatFileSize(fileSize)}
+                            </p>
+                          </div>
+                          <div className="flex gap-2">
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={downloadFile}
+                              disabled={!fileBase64}
+                            >
+                              <Download className="w-4 h-4 mr-1" />
+                              ダウンロード
+                            </Button>
+                            <Button
+                              variant="outline"
+                              size="sm"
+                              onClick={clearFile}
+                            >
+                              クリア
+                            </Button>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {fileBase64 && isImage(fileType) && (
+                    <Card>
+                      <CardHeader>
+                        <CardTitle>画像プレビュー</CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="text-center">
+                          <img
+                            src={`data:${fileType};base64,${fileBase64}`}
+                            alt={fileName}
+                            className="max-w-full max-h-64 mx-auto rounded-lg shadow-md"
+                          />
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )}
+
+                  {fileBase64 && (
+                    <Card>
+                      <CardHeader>
+                        <div className="flex justify-between items-center">
+                          <CardTitle>Base64データ</CardTitle>
+                          <CopyButton text={fileBase64} />
+                        </div>
+                      </CardHeader>
+                      <CardContent>
+                        <Textarea
+                          value={fileBase64}
+                          readOnly
+                          className="min-h-[120px] bg-gray-50 font-mono text-xs"
+                        />
+                        <div className="mt-2 text-sm text-gray-600">
+                          Base64データ長: {fileBase64.length}文字
+                        </div>
+                      </CardContent>
+                    </Card>
+                  )}
+                </div>
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          <TabsContent value="text" className="space-y-6">
+            <div className="flex items-center gap-4">
           <Select value={mode} onValueChange={(value: 'encode' | 'decode') => setMode(value)}>
             <SelectTrigger className="w-48">
               <SelectValue />
@@ -187,6 +377,8 @@ export default function Base64Tool() {
             </div>
           </CardContent>
         </Card>
+          </TabsContent>
+        </Tabs>
       </div>
     </ToolLayout>
   )
