@@ -70,6 +70,14 @@ export const toolsConfig: ToolConfig = {
           category: "text",
           icon: "ArrowUpDown",
           path: "/tools/line-break-converter"
+        },
+        {
+          id: "kana-romaji",
+          name: "かな・ローマ字変換",
+          description: "ひらがな・カタカナとローマ字の相互変換",
+          category: "text",
+          icon: "Languages",
+          path: "/tools/kana-romaji"
         }
       ]
     },
@@ -109,6 +117,53 @@ export const toolsConfig: ToolConfig = {
           category: "encoding",
           icon: "Smile",
           path: "/tools/emoji-converter"
+        }
+      ]
+    },
+    {
+      id: "image",
+      name: "画像処理",
+      icon: "Image",
+      tools: [
+        {
+          id: "image-resize",
+          name: "画像リサイズ",
+          description: "画像のサイズ変更と形式変換",
+          category: "image",
+          icon: "Maximize2",
+          path: "/tools/image-resize"
+        },
+        {
+          id: "image-compress",
+          name: "画像圧縮",
+          description: "JPEG・PNG・WebP画像の圧縮処理",
+          category: "image",
+          icon: "Minimize2",
+          path: "/tools/image-compress"
+        },
+        {
+          id: "image-convert",
+          name: "画像形式変換",
+          description: "JPEG・PNG・WebP間の画像形式変換",
+          category: "image",
+          icon: "ArrowLeftRight",
+          path: "/tools/image-convert"
+        },
+        {
+          id: "qr-reader",
+          name: "QRコード読み取り",
+          description: "画像からQRコードを読み取り・解析",
+          category: "image",
+          icon: "ScanLine",
+          path: "/tools/qr-reader"
+        },
+        {
+          id: "favicon-generator",
+          name: "Favicon生成",
+          description: "画像からFaviconを生成",
+          category: "image",
+          icon: "Globe",
+          path: "/tools/favicon-generator"
         }
       ]
     },
@@ -259,6 +314,22 @@ export const toolsConfig: ToolConfig = {
           category: "dev",
           icon: "Search",
           path: "/tools/dns-checker"
+        },
+        {
+          id: "dns-generator",
+          name: "DNSレコード生成",
+          description: "DNSレコード設定のテンプレートを生成",
+          category: "dev",
+          icon: "FileText",
+          path: "/tools/dns-generator"
+        },
+        {
+          id: "cidr-calculator",
+          name: "CIDR計算機",
+          description: "CIDR記法のIPアドレス範囲計算・サブネット分析",
+          category: "dev",
+          icon: "Network",
+          path: "/tools/cidr-calculator"
         }
       ]
     },

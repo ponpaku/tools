@@ -65,9 +65,9 @@ Each tool follows this pattern:
 - Utilities: `/src/lib/utils.ts`
 
 When adding new tools, register them in `tools-config.ts` with appropriate category, icon, and path, then create the corresponding page component following the established pattern.
-また、ツールを追加した際にはホームやサイドバーも適切に更新すること。
+また、ツールを追加した際にはホームやサイドバー、seo-config.ts も適切に更新すること。(アイコンも設定の上)
 
 ## remark
 
-- ツール追加、ツール修正変更など、作業後にはテスト検証を行うこと。
+- ツール追加、ツール修正変更など、作業後にはテスト検証、ツールの動作確認を行うこと。
 - テストサーバーを起動した場合タスク完了後に必ず停止すること。

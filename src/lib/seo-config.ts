@@ -43,6 +43,11 @@ export const competitorKeywords = {
     'エン・ＰＣサービス', 'トメイト', 'RAKKOTOOLS', 'CodeTool', 'ツールタロウ',
     'エンコーディング', 'デコーディング', 'オンライン変換'
   ],
+  image: [
+    '画像リサイズ', '画像圧縮', '画像変換', '画像加工', 'リサイズツール',
+    'TinyPNG', 'Squoosh', 'iLoveIMG', 'Photopea', 'remove.bg',
+    '画像最適化', 'ファビコン生成', 'QRコード読み取り', '画像処理'
+  ],
   datetime: [
     '年齢計算', '満年齢', '和暦変換', '西暦変換', 'Unixタイム', 'タイムスタンプ',
     '日付計算', '曜日計算', '法要計算', '日付ツール', 'カレンダー計算'
@@ -50,7 +55,8 @@ export const competitorKeywords = {
   dev: [
     'JSON整形', 'JSONフォーマッター', 'JSON Beautifier', 'JSON構文チェック',
     'JSONきれい', 'OneEngineer', 'RAKKOTOOLS', 'Web ToolBox',
-    'cron設定', 'cronジェネレータ', 'UUID生成', '開発者ツール'
+    'cron設定', 'cronジェネレータ', 'UUID生成', '開発者ツール',
+    'DNS設定', 'DNSレコード', 'CIDR計算', 'サブネット計算'
   ],
   generator: [
     'QRコード生成', 'QRコード作成', '二次元コード生成', 'QRのススメ',
@@ -507,6 +513,103 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     ],
     competitorKeywords: competitorKeywords.utility,
     category: 'utility',
+    schemaType: 'WebApplication'
+  },
+  // 画像処理ツール
+  'image-resize': {
+    title: '画像リサイズ・切り抜きツール【無料・高品質・Canvas処理】',
+    description: '画像のリサイズと切り抜きを高品質で実行する無料ツール。サイズ変更、トリミング、縦横比維持に対応。Web用画像作成、SNS投稿、ブログ画像に最適。',
+    keywords: [
+      '画像リサイズ', '画像切り抜き', '画像サイズ変更', 'トリミング', '画像加工',
+      'リサイズツール', 'Web画像', 'SNS画像', 'ブログ画像', '縦横比維持',
+      '高品質', 'Canvas', '無料', 'オンライン', '画像編集'
+    ],
+    competitorKeywords: competitorKeywords.image,
+    category: 'image',
+    schemaType: 'WebApplication'
+  },
+  'image-compress': {
+    title: '画像圧縮ツール【JPEG・PNG・WebP対応・無料】',
+    description: 'JPEG・PNG・WebP画像のファイルサイズを効率的に圧縮する無料ツール。品質調整、一括圧縮、複数形式対応。Web最適化、ストレージ節約に最適。',
+    keywords: [
+      '画像圧縮', '画像最適化', 'JPEG圧縮', 'PNG圧縮', 'WebP圧縮',
+      'ファイルサイズ削減', 'TinyPNG', 'Squoosh', 'iLoveIMG', 'Web最適化',
+      'ストレージ節約', '品質調整', '一括圧縮', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.image,
+    category: 'image',
+    schemaType: 'WebApplication'
+  },
+  'image-convert': {
+    title: '画像形式変換ツール【JPEG・PNG・WebP相互変換・無料】',
+    description: 'JPEG・PNG・WebP間の画像形式を相互変換する無料ツール。透明度保持、品質調整、一括変換対応。Web用画像、印刷用画像の形式変更に最適。',
+    keywords: [
+      '画像形式変換', '画像変換', 'JPEG変換', 'PNG変換', 'WebP変換',
+      '相互変換', '透明度保持', '品質調整', 'Web用画像', '印刷用画像',
+      '一括変換', 'フォーマット変換', '無料', 'オンライン', '画像処理'
+    ],
+    competitorKeywords: competitorKeywords.image,
+    category: 'image',
+    schemaType: 'WebApplication'
+  },
+  'qr-reader': {
+    title: 'QRコード読み取り・解析ツール【画像からQR読取・無料】',
+    description: '画像からQRコードを読み取り、内容を詳細解析する無料ツール。URL・メール・WiFi・連絡先・位置情報など多様なQRコードに対応。',
+    keywords: [
+      'QRコード読み取り', 'QRコード解析', 'QRコードスキャン', '二次元コード読取',
+      'URL QRコード', 'WiFi QRコード', '連絡先QRコード', '位置情報QRコード',
+      'QRコードデコード', 'QR Scanner', '画像解析', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.image,
+    category: 'image',
+    schemaType: 'WebApplication'
+  },
+  'favicon-generator': {
+    title: 'Favicon生成ツール【無料・複数サイズ・PWA対応】',
+    description: '画像からWebサイト用Faviconを複数サイズで生成する無料ツール。16x16から512x512まで対応。PWA、iOS、Android用アイコンも生成。',
+    keywords: [
+      'Favicon生成', 'アイコン生成', 'Webサイトアイコン', 'PWAアイコン',
+      'iOS Safari', 'Android Chrome', 'apple-touch-icon', 'manifest.json',
+      '16x16', '32x32', '192x192', '512x512', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.image,
+    category: 'image',
+    schemaType: 'WebApplication'
+  },
+  'dns-generator': {
+    title: 'DNSレコード生成ツール【A・MX・CNAME・TXT対応・無料】',
+    description: 'DNS設定のテンプレートを生成する無料ツール。A・AAAA・CNAME・MX・TXT・NS・SOAレコードに対応。BIND形式、ゾーンファイル出力可能。',
+    keywords: [
+      'DNSレコード生成', 'DNS設定', 'Aレコード', 'MXレコード', 'CNAMEレコード',
+      'TXTレコード', 'NSレコード', 'SOAレコード', 'BIND設定', 'ゾーンファイル',
+      'ドメイン設定', 'DNS管理', '無料', 'オンライン', '開発者ツール'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
+  },
+  'cidr-calculator': {
+    title: 'CIDR計算機【サブネット計算・IPアドレス範囲・無料】',
+    description: 'CIDR記法のIPアドレス範囲計算とサブネット分析を行う無料ツール。ネットワーク設計、IP管理、サブネット分割に最適。',
+    keywords: [
+      'CIDR計算', 'サブネット計算', 'IPアドレス計算', 'ネットワーク計算',
+      'サブネットマスク', 'IPアドレス範囲', 'ネットワーク設計', 'IP管理',
+      'サブネット分割', 'VLSM', 'プライベートIP', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
+  },
+  'kana-romaji': {
+    title: 'かな・ローマ字変換ツール【ひらがな・カタカナ・ヘボン式・無料】',
+    description: 'ひらがな・カタカナとローマ字を相互変換する無料ツール。ヘボン式・訓令式・日本式に対応。日本語入力、文字変換、言語学習に最適。',
+    keywords: [
+      'かな変換', 'ローマ字変換', 'ひらがな変換', 'カタカナ変換', 'ヘボン式',
+      '訓令式', '日本式', '日本語入力', '文字変換', '言語学習',
+      'Romaji', 'Hiragana', 'Katakana', '相互変換', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.text,
+    category: 'text',
     schemaType: 'WebApplication'
   }
 }
