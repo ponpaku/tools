@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { ToolLayout, CopyButton } from '@/components/layout/tool-layout'
 import { Input } from '@/components/ui/input'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
@@ -63,7 +63,7 @@ export default function UnitConverterTool() {
   const [inputValue, setInputValue] = useState<string>('')
   const [outputValue, setOutputValue] = useState<string>('')
 
-  const convertUnit = (value: string) => {
+  const convertUnit = useCallback((value: string) => {
     const numValue = parseFloat(value)
     if (isNaN(numValue)) {
       setOutputValue('')
@@ -100,7 +100,14 @@ export default function UnitConverterTool() {
     }
 
     setOutputValue(result.toFixed(6).replace(/\.?0+$/, ''))
-  }
+  }, [category, fromUnit, toUnit])
+
+  // Re-calculate when units change
+  useEffect(() => {
+    if (inputValue) {
+      convertUnit(inputValue)
+    }
+  }, [fromUnit, toUnit, category, inputValue, convertUnit])
 
   const handleInputChange = (value: string) => {
     setInputValue(value)
@@ -123,6 +130,14 @@ export default function UnitConverterTool() {
       setFromUnit('celsius')
       setToUnit('fahrenheit')
     }
+  }
+
+  const handleFromUnitChange = (newFromUnit: string) => {
+    setFromUnit(newFromUnit)
+  }
+
+  const handleToUnitChange = (newToUnit: string) => {
+    setToUnit(newToUnit)
   }
 
   const swapUnits = () => {
@@ -175,7 +190,7 @@ export default function UnitConverterTool() {
               <CardTitle>変換元</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Select value={fromUnit} onValueChange={setFromUnit}>
+              <Select value={fromUnit} onValueChange={handleFromUnitChange}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
@@ -207,7 +222,7 @@ export default function UnitConverterTool() {
               </div>
             </CardHeader>
             <CardContent className="space-y-4">
-              <Select value={toUnit} onValueChange={setToUnit}>
+              <Select value={toUnit} onValueChange={handleToUnitChange}>
                 <SelectTrigger>
                   <SelectValue />
                 </SelectTrigger>
