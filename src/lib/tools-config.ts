@@ -150,6 +150,14 @@ export const toolsConfig: ToolConfig = {
           path: "/tools/image-convert"
         },
         {
+          id: "svg-to-image",
+          name: "SVG画像変換",
+          description: "SVGファイルをPNG・JPEG・WebP形式に変換",
+          category: "image",
+          icon: "FileImage",
+          path: "/tools/svg-to-image"
+        },
+        {
           id: "qr-reader",
           name: "QRコード読み取り",
           description: "画像からQRコードを読み取り・解析",
@@ -307,6 +315,14 @@ export const toolsConfig: ToolConfig = {
           icon: "FileCode2",
           path: "/tools/markdown-html"
         },
+        {
+          id: "code-formatter",
+          name: "コード整形ツール",
+          description: "JavaScript・HTML・CSS・JSON・XMLコードの整形・縮小",
+          category: "dev",
+          icon: "Code2",
+          path: "/tools/code-formatter"
+        }
       ]
     },
     {
@@ -345,6 +361,22 @@ export const toolsConfig: ToolConfig = {
           category: "generator",
           icon: "FileText",
           path: "/tools/lorem-ipsum"
+        },
+        {
+          id: "diceware-generator",
+          name: "Dicewareパスフレーズ生成",
+          description: "Diceware方式による安全なパスフレーズを生成",
+          category: "generator",
+          icon: "Shield",
+          path: "/tools/diceware-generator"
+        },
+        {
+          id: "barcode-generator",
+          name: "バーコード生成",
+          description: "CODE128・EAN13・Code39バーコードを生成",
+          category: "generator",
+          icon: "BarChart3",
+          path: "/tools/barcode-generator"
         }
       ]
     },

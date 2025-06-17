@@ -660,6 +660,19 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     category: 'utility',
     schemaType: 'WebApplication'
   },
+  'code-formatter': {
+    title: 'コード整形ツール【JavaScript・HTML・CSS・JSON・XML・無料】',
+    description: 'JavaScript・HTML・CSS・JSON・XMLコードの整形・縮小を行う無料ツール。プログラミング、Web開発、コードレビューに最適。インデント調整、圧縮機能付き。',
+    keywords: [
+      'コード整形', 'コードフォーマッター', 'JavaScript整形', 'HTML整形', 'CSS整形',
+      'JSON整形', 'XML整形', 'コード圧縮', 'ミニファイ', 'プログラミング',
+      'Web開発', 'コードレビュー', 'インデント', 'コード美化', '構文整形',
+      '無料', 'オンライン', '開発者ツール'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
+  },
   'lorem-ipsum': {
     title: 'Lorem Ipsum生成ツール【ダミーテキスト・プレースホルダー・無料】',
     description: 'Lorem Ipsumダミーテキストを生成する無料ツール。Webデザイン、印刷物、プロトタイプ作成に最適。5種類のスタイル対応。',
@@ -670,6 +683,42 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     ],
     competitorKeywords: competitorKeywords.generator,
     category: 'generator',
+    schemaType: 'WebApplication'
+  },
+  'diceware-generator': {
+    title: 'Dicewareパスフレーズ生成ツール【暗号学的安全・高強度・無料】',
+    description: 'Diceware方式による暗号学的に安全なパスフレーズを生成する無料ツール。高いエントロピーで覚えやすく安全なパスワード作成に最適。',
+    keywords: [
+      'Diceware', 'パスフレーズ生成', '暗号学的安全', 'セキュアパスワード', 'エントロピー',
+      'パスワード生成', 'セキュリティ', '高強度パスワード', '覚えやすいパスワード',
+      'パスワード管理', 'セキュア認証', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.generator,
+    category: 'generator',
+    schemaType: 'WebApplication'
+  },
+  'barcode-generator': {
+    title: 'バーコード生成ツール【CODE128・EAN13・CODE39・無料】',
+    description: 'CODE128・EAN13・CODE39・EAN8バーコードを生成する無料ツール。商品管理、在庫管理、物流システムに最適。PNG形式でダウンロード可能。',
+    keywords: [
+      'バーコード生成', 'CODE128', 'EAN13', 'CODE39', 'EAN8', 'JANコード',
+      '商品管理', '在庫管理', '物流', 'バーコード作成', '一次元バーコード',
+      'バーコードリーダー', 'POS', '商品識別', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.generator,
+    category: 'generator',
+    schemaType: 'WebApplication'
+  },
+  'svg-to-image': {
+    title: 'SVG画像変換ツール【PNG・JPEG・WebP変換・無料】',
+    description: 'SVGファイルをPNG・JPEG・WebP形式に変換する無料ツール。透明度対応、サイズ調整、品質設定可能。Web用画像作成に最適。',
+    keywords: [
+      'SVG変換', 'SVG PNG変換', 'SVG JPEG変換', 'SVG WebP変換', 'ベクター画像変換',
+      'SVG画像変換', '画像形式変換', 'SVGツール', 'ベクターグラフィック',
+      'Web画像', '透明度保持', 'サイズ調整', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.image,
+    category: 'image',
     schemaType: 'WebApplication'
   }
 }
