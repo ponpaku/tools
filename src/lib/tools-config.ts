@@ -577,6 +577,45 @@ export const toolsConfig: ToolConfig = {
       ]
     },
     {
+      id: "pdf",
+      name: "PDF操作",
+      icon: "FileText",
+      tools: [
+        {
+          id: "pdf-merge",
+          name: "PDFマージ",
+          description: "複数のPDFファイルを1つに結合",
+          category: "pdf",
+          icon: "FileImage",
+          path: "/tools/pdf-merge"
+        },
+        {
+          id: "pdf-split",
+          name: "PDF分割",
+          description: "PDFファイルを複数ページに分割",
+          category: "pdf",
+          icon: "Scissors",
+          path: "/tools/pdf-split"
+        },
+        {
+          id: "pdf-compress",
+          name: "PDF圧縮",
+          description: "PDFファイルサイズを圧縮",
+          category: "pdf",
+          icon: "Archive",
+          path: "/tools/pdf-compress"
+        },
+        {
+          id: "image-to-pdf",
+          name: "画像→PDF変換",
+          description: "複数の画像をPDFファイルに変換",
+          category: "pdf",
+          icon: "FileImage",
+          path: "/tools/image-to-pdf"
+        }
+      ]
+    },
+    {
       id: "utility",
       name: "ユーティリティ",
       icon: "Wrench",

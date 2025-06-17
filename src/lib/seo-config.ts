@@ -82,6 +82,10 @@ export const competitorKeywords = {
   network: [
     'DNS設定', 'DNSレコード', 'CIDR計算', 'サブネット計算',
     'IPアドレス', 'HTTPヘッダー', 'ネットワーク診断'
+  ],
+  pdf: [
+    'PDF結合', 'PDFマージ', 'PDF分割', 'PDF圧縮', 'PDF変換',
+    'PDF編集', 'PDF処理', 'PDF操作', 'PDFツール', 'PDF管理'
   ]
 }
 
@@ -719,6 +723,55 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     ],
     competitorKeywords: competitorKeywords.image,
     category: 'image',
+    schemaType: 'WebApplication'
+  },
+  // PDF操作ツール
+  'pdf-merge': {
+    title: 'PDFマージ・結合ツール【複数PDF結合・無料・高速処理】',
+    description: '複数のPDFファイルを1つに結合する無料ツール。ページ順序の調整、ファイルサイズ最適化、高速処理に対応。文書管理、資料整理に最適。',
+    keywords: [
+      'PDFマージ', 'PDF結合', 'PDF統合', 'PDF合体', 'PDFファイル結合',
+      '複数PDF結合', 'PDF連結', 'PDF一体化', 'PDF整理', '文書管理',
+      'ページ順序', 'PDFツール', '無料', 'オンライン', 'PDF処理'
+    ],
+    competitorKeywords: competitorKeywords.pdf,
+    category: 'pdf',
+    schemaType: 'WebApplication'
+  },
+  'pdf-split': {
+    title: 'PDF分割ツール【ページ指定分割・範囲分割・無料】',
+    description: 'PDFファイルを指定ページや範囲で分割する無料ツール。単一ページ分割、複数ページ分割、カスタム範囲対応。文書整理に最適。',
+    keywords: [
+      'PDF分割', 'PDFページ分割', 'PDF切り分け', 'PDF分離', 'PDFファイル分割',
+      'ページ指定分割', '範囲分割', '単一ページ', 'PDF抽出', '文書分割',
+      'PDFツール', '無料', 'オンライン', 'PDF処理'
+    ],
+    competitorKeywords: competitorKeywords.pdf,
+    category: 'pdf',
+    schemaType: 'WebApplication'
+  },
+  'pdf-compress': {
+    title: 'PDF圧縮ツール【ファイルサイズ削減・品質調整・無料】',
+    description: 'PDFファイルのサイズを効率的に圧縮する無料ツール。画像品質調整、メタデータ除去、最適化処理でファイルサイズを大幅削減。',
+    keywords: [
+      'PDF圧縮', 'PDFサイズ削減', 'PDF最適化', 'PDFファイルサイズ',
+      '画像品質調整', 'メタデータ除去', 'PDF軽量化', 'ファイル容量削減',
+      'PDFツール', '無料', 'オンライン', 'PDF処理'
+    ],
+    competitorKeywords: competitorKeywords.pdf,
+    category: 'pdf',
+    schemaType: 'WebApplication'
+  },
+  'image-to-pdf': {
+    title: '画像→PDF変換ツール【JPEG・PNG→PDF・複数画像対応・無料】',
+    description: '複数の画像をPDFファイルに変換する無料ツール。JPEG・PNG・WebP対応、ページサイズ調整、画像順序変更可能。資料作成に最適。',
+    keywords: [
+      '画像PDF変換', 'JPEG PDF変換', 'PNG PDF変換', '画像ファイルPDF化',
+      '複数画像PDF', '画像結合PDF', 'PDF作成', '画像→PDF',
+      '資料作成', 'ページサイズ調整', 'PDFツール', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.pdf,
+    category: 'pdf',
     schemaType: 'WebApplication'
   }
 }
