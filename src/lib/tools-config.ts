@@ -503,6 +503,14 @@ export const toolsConfig: ToolConfig = {
           category: "calculator",
           icon: "ShoppingCart",
           path: "/tools/unit-price-calculator"
+        },
+        {
+          id: "slope-calculator",
+          name: "勾配計算機",
+          description: "角度・傾斜・勾配をパーセント・度数・比率で相互変換",
+          category: "calculator",
+          icon: "TrendingUp",
+          path: "/tools/slope-calculator"
         }
       ]
     },

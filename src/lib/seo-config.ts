@@ -785,6 +785,19 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     competitorKeywords: competitorKeywords.calculator,
     category: 'calculator',
     schemaType: 'WebApplication'
+  },
+  'slope-calculator': {
+    title: '勾配計算機【角度・傾斜・勾配の変換・パーセント・度数・比率】',
+    description: '角度・傾斜・勾配をパーセント・度数・ラジアン・比率で相互変換する無料ツール。建築・土木・道路設計・屋根勾配計算に最適。2点間座標からの勾配計算にも対応。',
+    keywords: [
+      '勾配計算', '傾斜計算', '角度計算', '勾配変換', 'パーセント勾配', '度数変換',
+      '比率計算', '1:n勾配', '建築', '土木', '道路設計', '屋根勾配',
+      'スロープ角度', '坂道角度', '傾斜角', 'tan計算', '三角関数', '座標計算',
+      '測量', '設計', '工事', '建設', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.calculator,
+    category: 'calculator',
+    schemaType: 'WebApplication'
   }
 }
 
