@@ -798,6 +798,78 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     competitorKeywords: competitorKeywords.calculator,
     category: 'calculator',
     schemaType: 'WebApplication'
+  },
+  'pressure-converter': {
+    title: '圧力変換ツール【atm・Pa・bar・psi・Torr変換・無料】',
+    description: 'atm・Pa・bar・psi・Torr・mmHg等の圧力単位を瞬時に相互変換する無料ツール。気象学・工学・物理学・化学実験に最適。',
+    keywords: [
+      '圧力変換', '圧力単位', 'atm', 'Pa', 'bar', 'psi', 'Torr', 'mmHg',
+      '気圧', '大気圧', '水圧', '気象学', '工学', '物理学', '化学実験',
+      'パスカル', 'バール', 'トル', '水銀柱', '圧力計算', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.calculator,
+    category: 'calculator',
+    schemaType: 'WebApplication'
+  },
+  'speed-converter': {
+    title: '速度変換ツール【km/h・m/s・mph・ノット変換・無料】',
+    description: 'km/h・m/s・mph・ノット・Mach等の速度単位を瞬時に相互変換する無料ツール。交通・航空・海運・スポーツに最適。',
+    keywords: [
+      '速度変換', '速度単位', 'km/h', 'm/s', 'mph', 'ノット', 'Mach',
+      '時速', '秒速', 'マイル', '航空', '海運', 'スポーツ', '交通',
+      '風速', '走行速度', '飛行速度', '速度計算', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.calculator,
+    category: 'calculator',
+    schemaType: 'WebApplication'
+  },
+  'area-converter': {
+    title: '面積変換ツール【m²・km²・acres・坪・畳変換・無料】',
+    description: 'm²・km²・acres・坪・畳・ヘクタール等の面積単位を瞬時に相互変換する無料ツール。不動産・農業・建築・測量に最適。',
+    keywords: [
+      '面積変換', '面積単位', 'm²', 'km²', 'acres', '坪', '畳', 'ヘクタール',
+      '平方メートル', 'エーカー', '不動産', '農業', '建築', '測量',
+      '土地', '敷地面積', '耕作面積', '面積計算', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.calculator,
+    category: 'calculator',
+    schemaType: 'WebApplication'
+  },
+  'time-calculator': {
+    title: '時間計算ツール【時間加算・減算・時間差計算・無料】',
+    description: '時間の加算・減算・時間差計算を行う無料ツール。労働時間・勤務時間・経過時間・所要時間の計算に最適。',
+    keywords: [
+      '時間計算', '時間加算', '時間減算', '時間差', '経過時間', '所要時間',
+      '労働時間', '勤務時間', '時刻計算', 'タイムカード', 'シフト',
+      '残業時間', '休憩時間', '時間管理', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.calculator,
+    category: 'calculator',
+    schemaType: 'WebApplication'
+  },
+  'percentage-calculator': {
+    title: 'パーセンテージ計算機【百分率・増減率・割合計算・無料】',
+    description: '百分率・増減率・割合・比率を瞬時に計算する無料ツール。消費税・割引・利益率・成長率・試験の点数計算に最適。',
+    keywords: [
+      'パーセンテージ', '百分率', '増減率', '割合計算', '比率', 'パーセント',
+      '消費税', '割引', '利益率', '成長率', '試験点数', '得点率',
+      '変化率', '伸び率', '率計算', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.calculator,
+    category: 'calculator',
+    schemaType: 'WebApplication'
+  },
+  'excel-to-html': {
+    title: 'Excel to HTML変換ツール【Excelテーブル→HTML変換・無料】',
+    description: 'ExcelやスプレッドシートのデータをコピペでHTMLテーブルに瞬時に変換する無料ツール。Web開発・ブログ・ドキュメント作成に最適。',
+    keywords: [
+      'Excel HTML変換', 'ExcelテーブルHTML', 'スプレッドシートHTML', 'HTMLテーブル生成',
+      'Excel変換', 'テーブル変換', 'Web開発', 'ブログ', 'ドキュメント作成',
+      'コピペ変換', 'データ変換', 'HTML作成', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
   }
 }
 

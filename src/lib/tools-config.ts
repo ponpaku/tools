@@ -322,6 +322,14 @@ export const toolsConfig: ToolConfig = {
           category: "dev",
           icon: "Code2",
           path: "/tools/code-formatter"
+        },
+        {
+          id: "excel-to-html",
+          name: "Excel to HTML変換",
+          description: "Excelデータをコピーして瞬時にHTMLテーブルに変換",
+          category: "dev",
+          icon: "Table",
+          path: "/tools/excel-to-html"
         }
       ]
     },
@@ -511,6 +519,46 @@ export const toolsConfig: ToolConfig = {
           category: "calculator",
           icon: "TrendingUp",
           path: "/tools/slope-calculator"
+        },
+        {
+          id: "pressure-converter",
+          name: "圧力変換ツール",
+          description: "atm・Pa・bar・psi・Torr等の圧力単位変換",
+          category: "calculator",
+          icon: "Gauge",
+          path: "/tools/pressure-converter"
+        },
+        {
+          id: "speed-converter",
+          name: "速度変換ツール",
+          description: "km/h・m/s・mph・ノット等の速度単位変換",
+          category: "calculator",
+          icon: "Zap",
+          path: "/tools/speed-converter"
+        },
+        {
+          id: "area-converter",
+          name: "面積変換ツール",
+          description: "m²・km²・acres・坪等の面積単位変換",
+          category: "calculator",
+          icon: "Square",
+          path: "/tools/area-converter"
+        },
+        {
+          id: "time-calculator",
+          name: "時間計算ツール",
+          description: "時間の加算・減算・時間差計算",
+          category: "calculator",
+          icon: "Clock",
+          path: "/tools/time-calculator"
+        },
+        {
+          id: "percentage-calculator",
+          name: "パーセンテージ計算機",
+          description: "百分率・増減率・割合計算",
+          category: "calculator",
+          icon: "Percent",
+          path: "/tools/percentage-calculator"
         }
       ]
     },
