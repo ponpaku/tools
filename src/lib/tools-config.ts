@@ -36,7 +36,7 @@ export const toolsConfig: ToolConfig = {
           name: "改行削除ツール",
           description: "改行を削除してテキストを整形",
           category: "text",
-          icon: "RemoveFormatting",
+          icon: "FileText",
           path: "/tools/line-remover"
         },
         {
@@ -201,7 +201,7 @@ export const toolsConfig: ToolConfig = {
           name: "法要計算機",
           description: "法要の日程を計算",
           category: "datetime",
-          icon: "Flower",
+          icon: "Heart",
           path: "/tools/memorial-calculator"
         }
       ]
@@ -319,7 +319,7 @@ export const toolsConfig: ToolConfig = {
           name: "運勢・診断生成器",
           description: "占い・おみくじ・診断結果をランダム生成",
           category: "generator",
-          icon: "Sparkles",
+          icon: "Star",
           path: "/tools/fortune-generator"
         }
       ]
@@ -381,7 +381,7 @@ export const toolsConfig: ToolConfig = {
           name: "満年齢計算機",
           description: "生年月日から満年齢を計算",
           category: "calculator",
-          icon: "Birthday",
+          icon: "Calendar",
           path: "/tools/age-calculator"
         },
         {
@@ -389,7 +389,7 @@ export const toolsConfig: ToolConfig = {
           name: "BMI計算機",
           description: "身長・体重からBMI（Body Mass Index）を計算",
           category: "calculator",
-          icon: "Scale",
+          icon: "Weight",
           path: "/tools/bmi-calculator"
         },
         {
@@ -397,7 +397,7 @@ export const toolsConfig: ToolConfig = {
           name: "転送速度計算器",
           description: "データ転送時間を計算",
           category: "calculator",
-          icon: "Gauge",
+          icon: "Wifi",
           path: "/tools/transfer-calculator"
         },
         {
@@ -452,7 +452,7 @@ export const toolsConfig: ToolConfig = {
           name: "ローン返済・利息計算機",
           description: "住宅ローン・自動車ローンなどの返済計画と利息計算ツール",
           category: "finance",
-          icon: "PiggyBank",
+          icon: "CreditCard",
           path: "/tools/loan-calculator"
         },
         {
@@ -460,7 +460,7 @@ export const toolsConfig: ToolConfig = {
           name: "税金計算機",
           description: "所得税・住民税・社会保険料の計算ツール",
           category: "finance",
-          icon: "Receipt",
+          icon: "FileText",
           path: "/tools/tax-calculator"
         }
       ]
