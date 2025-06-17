@@ -623,6 +623,18 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     competitorKeywords: competitorKeywords.text,
     category: 'text',
     schemaType: 'WebApplication'
+  },
+  'csv-json': {
+    title: 'CSV・JSON変換ツール【相互変換・無料・データフォーマット変換】',
+    description: 'CSVとJSONを相互変換する無料ツール。データのインポート・エクスポート、API連携、データ分析に最適。ヘッダー行対応、各種区切り文字対応。',
+    keywords: [
+      'CSV変換', 'JSON変換', 'CSV JSON 変換', 'データ変換', 'フォーマット変換',
+      'データインポート', 'データエクスポート', 'API連携', 'データ分析',
+      'CSVパーサー', 'JSONパーサー', '相互変換', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
   }
 }
 

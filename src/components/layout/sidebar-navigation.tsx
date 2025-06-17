@@ -97,6 +97,7 @@ export function SidebarNavigation() {
       Sparkles: '✨',
       Spellcheck: '✔️',
       Star: '⭐',
+      Table: '📊',
       TestTube: '🧪',
       Timer: '⏱️',
       TrendingUp: '📈',

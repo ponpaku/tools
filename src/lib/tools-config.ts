@@ -291,6 +291,14 @@ export const toolsConfig: ToolConfig = {
           icon: "Eye",
           path: "/tools/markdown-preview"
         },
+        {
+          id: "csv-json",
+          name: "CSV・JSON変換",
+          description: "CSVとJSONの相互変換ツール",
+          category: "dev",
+          icon: "Table",
+          path: "/tools/csv-json"
+        },
       ]
     },
     {
