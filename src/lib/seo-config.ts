@@ -659,6 +659,18 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     competitorKeywords: competitorKeywords.utility,
     category: 'utility',
     schemaType: 'WebApplication'
+  },
+  'lorem-ipsum': {
+    title: 'Lorem Ipsum生成ツール【ダミーテキスト・プレースホルダー・無料】',
+    description: 'Lorem Ipsumダミーテキストを生成する無料ツール。Webデザイン、印刷物、プロトタイプ作成に最適。5種類のスタイル対応。',
+    keywords: [
+      'Lorem Ipsum', 'ダミーテキスト', 'プレースホルダー', 'テキスト生成',
+      'Webデザイン', 'モックアップ', 'プロトタイプ', 'レイアウト', 'デザイン',
+      'ワイヤーフレーム', 'テンプレート', 'フィラーテキスト', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.generator,
+    category: 'generator',
+    schemaType: 'WebApplication'
   }
 }
 

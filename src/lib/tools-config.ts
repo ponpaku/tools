@@ -337,6 +337,14 @@ export const toolsConfig: ToolConfig = {
           category: "generator",
           icon: "Star",
           path: "/tools/fortune-generator"
+        },
+        {
+          id: "lorem-ipsum",
+          name: "Lorem Ipsum生成",
+          description: "ダミーテキスト・プレースホルダーテキストを生成",
+          category: "generator",
+          icon: "FileText",
+          path: "/tools/lorem-ipsum"
         }
       ]
     },
