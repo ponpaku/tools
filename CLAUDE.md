@@ -53,7 +53,6 @@ Each tool follows this pattern:
 
 - Application is fully localized in Japanese
 - Includes specialized Japanese text processing (hiragana, katakana, kanji detection)
-- Japanese cultural tools like 法要計算機 (memorial service calculator) and 和暦西暦変換 (Japanese era conversion)
 - Character encoding considerations for Japanese text (UTF-8, Shift_JIS)
 
 ### File Conventions
@@ -61,11 +60,34 @@ Each tool follows this pattern:
 - Tool pages: `/src/app/tools/{tool-id}/page.tsx`
 - Shared components: `/src/components/`
 - Configuration: `/src/lib/tools-config.ts`
+- Icon mapping: `/src/lib/icon-map.ts` (unified icon management system)
 - Types: `/src/types/index.ts`
 - Utilities: `/src/lib/utils.ts`
 
 When adding new tools, register them in `tools-config.ts` with appropriate category, icon, and path, then create the corresponding page component following the established pattern.
-また、ツールを追加した際にはホームやサイドバー、seo-config.ts も適切に更新すること。(アイコンも設定の上)
+また、ツールを追加した際にはホームやサイドバー、seo-config.ts も適切に更新すること。
+
+### 新規ツール追加時の必須チェックリスト
+
+新しいツールを追加する際は以下を必ず実行すること：
+
+1. **tools-config.ts** - ツールの基本情報を追加
+2. **icon-map.ts** - 新しいアイコンがある場合はマッピングを追加  
+3. **seo-config.ts** - SEO設定を追加（title, description, keywords等）
+4. **page.tsx** と **{tool-name}-tool.tsx** - コンポーネント実装
+5. 各ツールページで `generateToolMetadata()` と `generateToolStructuredData()` の呼び出しが正しく設定されていることを確認
+
+SEO設定の追加を忘れると「SEO config not found for tool: {tool-id}」エラーが発生するため特に注意が必要。
+
+### Icon Management System
+
+アイコンは統一管理システムを使用：
+
+- `/src/lib/icon-map.ts` - 全アイコンマッピングを一括管理
+- `getCategoryIcon(iconName)` - カテゴリアイコンを取得
+- `getToolIcon(iconName)` - ツールアイコンを取得
+- 新しいアイコンを追加する場合は `icon-map.ts` を更新すること
+- アイコン名は `tools-config.ts` で定義し、絵文字マッピングは `icon-map.ts` で管理
 
 ## remark
 
