@@ -15,6 +15,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { AppLayout } from "@/components/layout/app-layout";
 import { toolsConfig } from "@/lib/tools-config";
+import { getCategoryIcon, getToolIcon } from "@/lib/icon-map";
 import { Tool } from "@/types";
 import { HomePageAd } from "@/components/ads/ad-wrapper";
 
@@ -61,58 +62,6 @@ export default function HomePage() {
 		);
 	}, [allTools, searchQuery]);
 
-	const getIcon = (iconName: string) => {
-		const iconMap: Record<string, string> = {
-			Type: "📝",
-			Lock: "🔒",
-			Calendar: "📅",
-			Code: "💻",
-			Sparkles: "✨",
-			Settings: "⚙️",
-		};
-		return iconMap[iconName] || "🔧";
-	};
-
-	const getToolIcon = (iconName: string) => {
-		const iconMap: Record<string, string> = {
-			Calculator: "🧮",
-			ArrowLeftRight: "↔️",
-			ArrowUpDown: "↕️",
-			CaseSensitive: "Aa",
-			RemoveFormatting: "📄",
-			Highlighter: "🖍️",
-			GitCompare: "🔍",
-			Key: "🔑",
-			Link: "🔗",
-			Hash: "#️⃣",
-			Birthday: "🎂",
-			CalendarDays: "📆",
-			Clock: "⏰",
-			Flower: "🌸",
-			Languages: "🈯",
-			Braces: "{}",
-			FileText: "📄",
-			Timer: "⏱️",
-			Search: "🔍",
-			QrCode: "📱",
-			Dices: "🎲",
-			ShoppingCart: "🛒",
-			Globe: "🌐",
-			Image: "🖼️",
-			Gauge: "📊",
-			Zap: "⚡",
-			Trophy: "🏆",
-			Shield: "🛡️",
-			Eye: "👁️",
-			Percent: "💯",
-			Smile: "😀",
-			CircleDot: "⭕",
-			Grid3X3: "🔳",
-			RotateCcw: "🔄",
-			Gamepad2: "🎮",
-		};
-		return iconMap[iconName] || "🔧";
-	};
 
 	const ToolCard = ({
 		tool,
@@ -141,7 +90,7 @@ export default function HomePage() {
 						</div>
 						{showCategory && (
 							<Badge variant="secondary" className="text-xs">
-								<span className="mr-1">{getIcon(tool.categoryIcon)}</span>
+								<span className="mr-1">{getCategoryIcon(tool.categoryIcon)}</span>
 								{tool.categoryName}
 							</Badge>
 						)}
@@ -304,7 +253,7 @@ export default function HomePage() {
 								{toolsConfig.categories.map((category) => (
 									<div key={category.id}>
 										<div className="flex items-center space-x-3 mb-4">
-											<span className="text-2xl">{getIcon(category.icon)}</span>
+											<span className="text-2xl">{getCategoryIcon(category.icon)}</span>
 											<h3 className="text-xl font-semibold text-gray-900">
 												{category.name}
 											</h3>
