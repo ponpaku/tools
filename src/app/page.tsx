@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import Link from "next/link";
-import { Search, Star, TrendingUp, Clock, Zap } from "lucide-react";
+import { Search, Star, TrendingUp, Clock, Zap, Filter, X } from "lucide-react";
 import {
 	Card,
 	CardContent,
@@ -21,6 +21,7 @@ import { HomePageAd } from "@/components/ads/ad-wrapper";
 
 export default function HomePage() {
 	const [searchQuery, setSearchQuery] = useState("");
+	const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
 
 	// 人気ツール（アクセス頻度が高そうなもの）
 	const popularTools = [
@@ -52,16 +53,42 @@ export default function HomePage() {
 	}, []);
 
 	const filteredTools = useMemo(() => {
-		if (!searchQuery.trim()) return allTools;
+		let filtered = allTools;
 
-		return allTools.filter(
-			(tool) =>
-				tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				tool.categoryName.toLowerCase().includes(searchQuery.toLowerCase())
+		// カテゴリフィルターを適用
+		if (selectedCategories.length > 0) {
+			filtered = filtered.filter(tool => 
+				selectedCategories.includes(tool.category)
+			);
+		}
+
+		// 検索クエリを適用
+		if (searchQuery.trim()) {
+			filtered = filtered.filter(
+				(tool) =>
+					tool.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+					tool.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+					tool.categoryName.toLowerCase().includes(searchQuery.toLowerCase())
+			);
+		}
+
+		return filtered;
+	}, [allTools, searchQuery, selectedCategories]);
+
+	// カテゴリフィルターの切り替え
+	const toggleCategory = (categoryId: string) => {
+		setSelectedCategories(prev => 
+			prev.includes(categoryId)
+				? prev.filter(id => id !== categoryId)
+				: [...prev, categoryId]
 		);
-	}, [allTools, searchQuery]);
+	};
 
+	// すべてのフィルターをクリア
+	const clearAllFilters = () => {
+		setSearchQuery("");
+		setSelectedCategories([]);
+	};
 
 	const ToolCard = ({
 		tool,
