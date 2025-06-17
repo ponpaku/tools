@@ -635,6 +635,18 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     competitorKeywords: competitorKeywords.dev,
     category: 'dev',
     schemaType: 'WebApplication'
+  },
+  'markdown-html': {
+    title: 'Markdown・HTML変換ツール【相互変換・無料・リアルタイム】',
+    description: 'MarkdownとHTMLを相互変換する無料ツール。技術文書作成、ブログ執筆、Web開発に最適。見出し、リスト、表、コードブロック対応。',
+    keywords: [
+      'Markdown変換', 'HTML変換', 'Markdown HTML 変換', 'マークダウン変換',
+      '技術文書', 'ブログ執筆', 'Web開発', 'README', 'ドキュメント作成',
+      'リアルタイム変換', '相互変換', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.dev,
+    category: 'dev',
+    schemaType: 'WebApplication'
   }
 }
 

@@ -65,6 +65,7 @@ export function SidebarNavigation() {
       DollarSign: '💰',
       Eye: '👁️',
       FileCode: '📄',
+      FileCode2: '📋',
       FileSearch: '🔍',
       FileText: '📄',
       Fingerprint: '🔐',

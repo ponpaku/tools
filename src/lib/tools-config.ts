@@ -299,6 +299,14 @@ export const toolsConfig: ToolConfig = {
           icon: "Table",
           path: "/tools/csv-json"
         },
+        {
+          id: "markdown-html",
+          name: "Markdown・HTML変換",
+          description: "MarkdownとHTMLの相互変換ツール",
+          category: "dev",
+          icon: "FileCode2",
+          path: "/tools/markdown-html"
+        },
       ]
     },
     {
