@@ -447,6 +447,14 @@ export const toolsConfig: ToolConfig = {
           category: "calculator",
           icon: "TrendingUp",
           path: "/tools/statistics-calculator"
+        },
+        {
+          id: "memory-size-converter",
+          name: "メモリサイズ変換",
+          description: "Byte・KB・MB・GB・TB・PBの相互変換ツール",
+          category: "calculator",
+          icon: "HardDrive",
+          path: "/tools/memory-size-converter"
         }
       ]
     },

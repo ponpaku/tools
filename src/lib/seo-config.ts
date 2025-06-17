@@ -647,6 +647,18 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     competitorKeywords: competitorKeywords.dev,
     category: 'dev',
     schemaType: 'WebApplication'
+  },
+  'memory-size-converter': {
+    title: 'メモリサイズ変換ツール【Byte・KB・MB・GB・TB・PB・無料】',
+    description: 'Byte・KB・MB・GB・TB・PBの相互変換を行う無料ツール。Binary（1024進法）とDecimal（1000進法）両対応。ストレージ容量計算に最適。',
+    keywords: [
+      'メモリサイズ変換', 'バイト変換', 'KB MB GB 変換', 'ストレージ容量',
+      'ファイルサイズ', 'データサイズ', 'Binary Decimal', '1024進法', '1000進法',
+      'メモリ計算', 'ディスク容量', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.utility,
+    category: 'utility',
+    schemaType: 'WebApplication'
   }
 }
 

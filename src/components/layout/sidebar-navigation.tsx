@@ -72,6 +72,7 @@ export function SidebarNavigation() {
       Gamepad2: '🎮',
       GitCompare: '🔍',
       Grid3X3: '🔲',
+      HardDrive: '💾',
       Hash: '#️⃣',
       Heart: '❤️',
       Highlighter: '🖍️',
