@@ -24,12 +24,6 @@ export default function PDFMergeTool() {
   const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const handleFileUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = Array.from(event.target.files || [])
-    await processFiles(selectedFiles)
-    event.target.value = ''
-  }, [processFiles])
-
   const processFiles = useCallback(async (selectedFiles: File[]) => {
     setError(null)
 
@@ -57,6 +51,12 @@ export default function PDFMergeTool() {
       }
     }
   }, [])
+
+  const handleFileUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = Array.from(event.target.files || [])
+    await processFiles(selectedFiles)
+    event.target.value = ''
+  }, [processFiles])
 
   const handleDrop = useCallback((event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault()

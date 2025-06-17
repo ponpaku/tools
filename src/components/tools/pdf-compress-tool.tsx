@@ -34,13 +34,6 @@ export default function PDFCompressTool() {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i]
   }, [])
 
-  const handleFileUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0]
-    if (!selectedFile) return
-    processFile(selectedFile)
-    event.target.value = ''
-  }, [processFile])
-
   const processFile = useCallback((selectedFile: File) => {
     if (selectedFile.type !== 'application/pdf') {
       setError('PDFファイルを選択してください')
@@ -51,6 +44,13 @@ export default function PDFCompressTool() {
     setFile(selectedFile)
     setResult(null)
   }, [])
+
+  const handleFileUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files?.[0]
+    if (!selectedFile) return
+    processFile(selectedFile)
+    event.target.value = ''
+  }, [processFile])
 
   const handleDrop = useCallback((event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault()

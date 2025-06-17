@@ -35,13 +35,6 @@ export default function PDFSplitTool() {
   const [isDragging, setIsDragging] = useState(false)
   const fileInputRef = useRef<HTMLInputElement>(null)
 
-  const handleFileUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFile = event.target.files?.[0]
-    if (!selectedFile) return
-    processFile(selectedFile)
-    event.target.value = ''
-  }, [processFile])
-
   const processFile = useCallback(async (selectedFile: File) => {
     if (selectedFile.type !== 'application/pdf') {
       setError('PDFファイルを選択してください')
@@ -61,6 +54,13 @@ export default function PDFSplitTool() {
       setError('PDFファイルの読み込みに失敗しました')
     }
   }, [])
+
+  const handleFileUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFile = event.target.files?.[0]
+    if (!selectedFile) return
+    processFile(selectedFile)
+    event.target.value = ''
+  }, [processFile])
 
   const handleDrop = useCallback((event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault()

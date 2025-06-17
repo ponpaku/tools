@@ -43,12 +43,6 @@ export default function ImageToPDFTool() {
     })
   }, [])
 
-  const handleImageUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
-    const selectedFiles = Array.from(event.target.files || [])
-    await processFiles(selectedFiles)
-    event.target.value = ''
-  }, [processFiles])
-
   const processFiles = useCallback(async (files: File[]) => {
     setError(null)
 
@@ -77,6 +71,12 @@ export default function ImageToPDFTool() {
       }
     }
   }, [loadImageDimensions])
+
+  const handleImageUpload = useCallback(async (event: React.ChangeEvent<HTMLInputElement>) => {
+    const selectedFiles = Array.from(event.target.files || [])
+    await processFiles(selectedFiles)
+    event.target.value = ''
+  }, [processFiles])
 
   const handleDrop = useCallback((event: React.DragEvent<HTMLDivElement>) => {
     event.preventDefault()
