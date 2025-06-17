@@ -33,10 +33,7 @@ export default function HomePage() {
 
 	// 更新履歴
 	const updateHistory = [
-		{ date: "2024-01-15", description: "ルーレット判定バグを修正" },
-		{ date: "2024-01-10", description: "ゲームカテゴリを追加" },
-		{ date: "2024-01-05", description: "スコアボード機能を追加" },
-		{ date: "2024-01-01", description: "電子レンジ時間計算器を追加" },
+		{ date: "2025-06-17", description: "公開" },
 	];
 
 	const allTools = useMemo(() => {
