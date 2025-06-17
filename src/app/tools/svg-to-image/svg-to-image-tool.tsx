@@ -203,7 +203,7 @@ export default function SvgToImageTool() {
             <CardTitle>SVG入力方法</CardTitle>
           </CardHeader>
           <CardContent>
-            <Tabs value={inputMethod} onValueChange={(value: InputMethod) => setInputMethod(value)}>
+            <Tabs value={inputMethod} onValueChange={(value) => setInputMethod(value as InputMethod)}>
               <TabsList className="grid w-full grid-cols-2">
                 <TabsTrigger value="file">ファイルアップロード</TabsTrigger>
                 <TabsTrigger value="text">SVGコード入力</TabsTrigger>

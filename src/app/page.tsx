@@ -1,8 +1,8 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Link from "next/link";
-import { Search, Star, TrendingUp, Clock, Zap, Filter, X } from "lucide-react";
+import { Search, Star, TrendingUp, Clock, Zap, Filter, X, Heart, Pin } from "lucide-react";
 import {
 	Card,
 	CardContent,
@@ -22,6 +22,7 @@ import { HomePageAd } from "@/components/ads/ad-wrapper";
 export default function HomePage() {
 	const [searchQuery, setSearchQuery] = useState("");
 	const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+	const [favoriteTools, setFavoriteTools] = useState<string[]>([]);
 
 	// 人気ツール（アクセス頻度が高そうなもの）
 	const popularTools = [
@@ -37,6 +38,31 @@ export default function HomePage() {
 	const updateHistory = [
 		{ date: "2025-06-17", description: "公開" },
 	];
+
+	// ローカルストレージからお気に入りツールを読み込み
+	useEffect(() => {
+		const savedFavorites = localStorage.getItem('favorite-tools');
+		if (savedFavorites) {
+			try {
+				const favorites = JSON.parse(savedFavorites);
+				setFavoriteTools(Array.isArray(favorites) ? favorites : []);
+			} catch (error) {
+				console.error('Failed to parse favorite tools from localStorage:', error);
+			}
+		}
+	}, []);
+
+	// お気に入りツールの追加/削除
+	const toggleFavorite = (toolId: string) => {
+		setFavoriteTools(prev => {
+			const newFavorites = prev.includes(toolId)
+				? prev.filter(id => id !== toolId)
+				: [...prev, toolId];
+			
+			localStorage.setItem('favorite-tools', JSON.stringify(newFavorites));
+			return newFavorites;
+		});
+	};
 
 	const allTools = useMemo(() => {
 		return toolsConfig.categories.flatMap((category) =>
@@ -94,44 +120,79 @@ export default function HomePage() {
 		tool,
 		showCategory = true,
 		featured = false,
+		showFavorite = true,
 	}: {
 		tool: Tool & { categoryName: string; categoryIcon: string };
 		showCategory?: boolean;
 		featured?: boolean;
-	}) => (
-		<Link href={tool.path}>
-			<Card
-				className={`h-full hover:shadow-lg hover:shadow-blue-100 transition-all duration-200 cursor-pointer group border-l-4 ${
-					featured
-						? "border-l-yellow-400 bg-gradient-to-r from-yellow-50 to-white"
-						: "border-l-blue-400"
-				}`}
-			>
-				<CardHeader className="pb-4">
-					<div className="flex items-start justify-between">
-						<div className="flex items-center space-x-2">
-							<div className="text-2xl">{getToolIcon(tool.icon)}</div>
-							{featured && (
-								<Star className="h-4 w-4 text-yellow-500 fill-current" />
-							)}
-						</div>
-						{showCategory && (
-							<Badge variant="secondary" className="text-xs">
-								<span className="mr-1">{getCategoryIcon(tool.categoryIcon)}</span>
-								{tool.categoryName}
-							</Badge>
-						)}
-					</div>
-					<CardTitle className="group-hover:text-blue-600 transition-colors text-lg">
-						{tool.name}
-					</CardTitle>
-					<CardDescription className="text-sm leading-relaxed">
-						{tool.description}
-					</CardDescription>
-				</CardHeader>
-			</Card>
-		</Link>
-	);
+		showFavorite?: boolean;
+	}) => {
+		const isFavorite = favoriteTools.includes(tool.id);
+		
+		return (
+			<div className="relative">
+				<Link href={tool.path}>
+					<Card
+						className={`h-full hover:shadow-lg hover:shadow-blue-100 transition-all duration-200 cursor-pointer group border-l-4 ${
+							featured
+								? "border-l-yellow-400 bg-gradient-to-r from-yellow-50 to-white"
+								: isFavorite
+								? "border-l-pink-400 bg-gradient-to-r from-pink-50 to-white"
+								: "border-l-blue-400"
+						}`}
+					>
+						<CardHeader className="pb-4">
+							<div className="flex items-start justify-between">
+								<div className="flex items-center space-x-2">
+									<div className="text-2xl">{getToolIcon(tool.icon)}</div>
+									{featured && (
+										<Star className="h-4 w-4 text-yellow-500 fill-current" />
+									)}
+									{isFavorite && (
+										<Heart className="h-4 w-4 text-pink-500 fill-current" />
+									)}
+								</div>
+								{showCategory && (
+									<Badge variant="secondary" className="text-xs">
+										<span className="mr-1">{getCategoryIcon(tool.categoryIcon)}</span>
+										{tool.categoryName}
+									</Badge>
+								)}
+							</div>
+							<CardTitle className="group-hover:text-blue-600 transition-colors text-lg">
+								{tool.name}
+							</CardTitle>
+							<CardDescription className="text-sm leading-relaxed">
+								{tool.description}
+							</CardDescription>
+						</CardHeader>
+					</Card>
+				</Link>
+				
+				{/* お気に入りボタン */}
+				{showFavorite && (
+					<Button
+						onClick={(e) => {
+							e.preventDefault();
+							e.stopPropagation();
+							toggleFavorite(tool.id);
+						}}
+						variant="ghost"
+						size="sm"
+						className={`absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity z-10 ${
+							isFavorite ? "opacity-100" : ""
+						}`}
+					>
+						<Heart className={`h-4 w-4 ${
+							isFavorite 
+								? "text-pink-500 fill-current" 
+								: "text-gray-400 hover:text-pink-500"
+						}`} />
+					</Button>
+				)}
+			</div>
+		);
+	};
 
 	return (
 		<AppLayout showCard={false}>
@@ -166,7 +227,7 @@ export default function HomePage() {
 						</div>
 
 						{/* 検索バー */}
-						<div className="relative max-w-2xl mx-auto mb-8">
+						<div className="relative max-w-2xl mx-auto mb-6">
 							<Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
 							<Input
 								type="text"
@@ -176,17 +237,97 @@ export default function HomePage() {
 								className="pl-12 h-12 text-lg border-2 border-blue-200 focus:border-blue-400 rounded-xl"
 							/>
 						</div>
+
+						{/* カテゴリフィルター */}
+						<div className="max-w-4xl mx-auto mb-8">
+							<div className="flex items-center gap-2 mb-4">
+								<Filter className="h-5 w-5 text-gray-600" />
+								<span className="text-sm font-medium text-gray-700">カテゴリで絞り込み:</span>
+								{(searchQuery.trim() || selectedCategories.length > 0) && (
+									<Button
+										onClick={clearAllFilters}
+										variant="ghost"
+										size="sm"
+										className="ml-2 text-gray-500 hover:text-gray-700"
+									>
+										<X className="h-4 w-4 mr-1" />
+										すべてクリア
+									</Button>
+								)}
+							</div>
+							
+							<div className="flex flex-wrap gap-2">
+								{toolsConfig.categories.map((category) => {
+									const isSelected = selectedCategories.includes(category.id);
+									const categoryToolCount = category.tools.length;
+									
+									return (
+										<Button
+											key={category.id}
+											onClick={() => toggleCategory(category.id)}
+											variant={isSelected ? "default" : "outline"}
+											size="sm"
+											className={`transition-all ${
+												isSelected 
+													? "bg-blue-600 hover:bg-blue-700 text-white" 
+													: "hover:bg-blue-50 hover:border-blue-300"
+											}`}
+										>
+											<span className="mr-2">{getCategoryIcon(category.icon)}</span>
+											{category.name}
+											<Badge 
+												variant="secondary" 
+												className={`ml-2 ${
+													isSelected 
+														? "bg-blue-500 text-white" 
+														: "bg-gray-100 text-gray-600"
+												}`}
+											>
+												{categoryToolCount}
+											</Badge>
+										</Button>
+									);
+								})}
+							</div>
+						</div>
 					</div>
 				</section>
 
-				{/* 検索結果または人気ツール */}
-				{searchQuery.trim() ? (
+				{/* 検索・フィルター結果または人気ツール */}
+				{searchQuery.trim() || selectedCategories.length > 0 ? (
 					<section>
-						<div className="flex items-center space-x-2 mb-6">
-							<Search className="h-6 w-6 text-blue-600" />
-							<h2 className="text-2xl font-bold text-gray-900">
-								検索結果 ({filteredTools.length}件)
-							</h2>
+						<div className="flex items-center justify-between mb-6">
+							<div className="flex items-center space-x-2">
+								<Search className="h-6 w-6 text-blue-600" />
+								<h2 className="text-2xl font-bold text-gray-900">
+									{searchQuery.trim() && selectedCategories.length > 0 
+										? "検索・フィルター結果" 
+										: searchQuery.trim() 
+											? "検索結果"
+											: "フィルター結果"
+									} ({filteredTools.length}件)
+								</h2>
+							</div>
+							
+							{/* 適用中のフィルター表示 */}
+							{selectedCategories.length > 0 && (
+								<div className="flex items-center space-x-2">
+									<span className="text-sm text-gray-600">フィルター:</span>
+									<div className="flex flex-wrap gap-1">
+										{selectedCategories.map((categoryId) => {
+											const category = toolsConfig.categories.find(c => c.id === categoryId);
+											if (!category) return null;
+											
+											return (
+												<Badge key={categoryId} variant="default" className="text-xs">
+													<span className="mr-1">{getCategoryIcon(category.icon)}</span>
+													{category.name}
+												</Badge>
+											);
+										})}
+									</div>
+								</div>
+							)}
 						</div>
 
 						{filteredTools.length > 0 ? (
@@ -214,6 +355,28 @@ export default function HomePage() {
 					</section>
 				) : (
 					<>
+						{/* お気に入りツール */}
+						{favoriteTools.length > 0 && (
+							<section>
+								<div className="flex items-center space-x-2 mb-6">
+									<Heart className="h-6 w-6 text-pink-600" />
+									<h2 className="text-2xl font-bold text-gray-900">お気に入りツール</h2>
+									<Badge className="bg-pink-100 text-pink-700">
+										<Pin className="h-3 w-3 mr-1" />
+										{favoriteTools.length}個
+									</Badge>
+								</div>
+
+								<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+									{allTools
+										.filter((tool) => favoriteTools.includes(tool.id))
+										.map((tool) => (
+											<ToolCard key={tool.id} tool={tool} showCategory={true} />
+										))}
+								</div>
+							</section>
+						)}
+
 						{/* 人気ツール */}
 						<section>
 							<div className="flex items-center space-x-2 mb-6">

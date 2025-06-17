@@ -495,6 +495,14 @@ export const toolsConfig: ToolConfig = {
           category: "calculator",
           icon: "HardDrive",
           path: "/tools/memory-size-converter"
+        },
+        {
+          id: "unit-price-calculator",
+          name: "単価比較電卓",
+          description: "複数商品の単価を計算・比較して最安値を見つけるツール",
+          category: "calculator",
+          icon: "ShoppingCart",
+          path: "/tools/unit-price-calculator"
         }
       ]
     },

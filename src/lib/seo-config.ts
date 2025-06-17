@@ -773,6 +773,18 @@ export const toolSEOConfigs: Record<string, ToolSEOConfig> = {
     competitorKeywords: competitorKeywords.pdf,
     category: 'pdf',
     schemaType: 'WebApplication'
+  },
+  'unit-price-calculator': {
+    title: '単価比較電卓【複数商品の単価計算・最安値比較・無料】',
+    description: '複数商品の単価を自動計算して比較する無料ツール。グラム単価、ミリリットル単価など重量・容量あたりの価格を比較し、最安値商品を瞬時に判定。お買い物・節約に最適。',
+    keywords: [
+      '単価比較', '単価計算', '価格比較', '最安値', 'グラム単価', 'ミリリットル単価',
+      'コスパ比較', '節約', 'お買い物', '商品比較', 'スーパー', '価格計算',
+      '重量単価', '容量単価', 'ショッピング', '無料', 'オンライン'
+    ],
+    competitorKeywords: competitorKeywords.calculator,
+    category: 'calculator',
+    schemaType: 'WebApplication'
   }
 }
 
