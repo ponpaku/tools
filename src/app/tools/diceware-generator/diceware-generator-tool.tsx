@@ -78,7 +78,8 @@ export default function DicewareGeneratorTool() {
       selectedWords.push(word)
     }
 
-    setPassphrase(selectedWords.join(separator))
+    const actualSeparator = separator === "none" ? "" : separator
+    setPassphrase(selectedWords.join(actualSeparator))
   }
 
   const calculateEntropy = () => {
@@ -131,7 +132,7 @@ export default function DicewareGeneratorTool() {
                 <SelectItem value="-">ハイフン</SelectItem>
                 <SelectItem value="_">アンダースコア</SelectItem>
                 <SelectItem value=".">ドット</SelectItem>
-                <SelectItem value="">なし</SelectItem>
+                <SelectItem value="none">なし</SelectItem>
               </SelectContent>
             </Select>
           </div>
