@@ -78,23 +78,25 @@ export const metadata: Metadata = {
   manifest: '/manifest.json',
   icons: {
     icon: [
-      { url: '/icons/icon-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/icons/icon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon.ico' },
     ],
     apple: [
-      { url: '/icons/icon-180x180.png', sizes: '180x180', type: 'image/png' },
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
     ],
     other: [
       {
-        rel: 'apple-touch-icon-precomposed',
-        url: '/icons/icon-152x152.png',
+        rel: 'icon',
+        type: 'image/svg+xml',
+        url: '/icon.svg',
       },
     ],
   },
   other: {
     'theme-color': '#3b82f6',
     'msapplication-TileColor': '#3b82f6',
-    'msapplication-TileImage': '/icons/icon-144x144.png',
+    'msapplication-TileImage': '/android-chrome-192x192.png',
     'apple-mobile-web-app-capable': 'yes',
     'apple-mobile-web-app-status-bar-style': 'default',
     'apple-mobile-web-app-title': 'ぽんぱくツール',
@@ -123,7 +125,7 @@ export default function RootLayout({
     "creator": {
       "@type": "Organization",
       "name": "ぽんぱく",
-      "url": siteUrl
+      "url": "https://note.com/ponpaku"
     },
     "offers": {
       "@type": "Offer",

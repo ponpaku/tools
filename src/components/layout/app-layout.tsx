@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import { SidebarNavigation } from './sidebar-navigation'
 import { ToolPageAd } from '@/components/ads/ad-wrapper'
+import { Footer } from './footer'
 import { useState } from 'react'
 import Link from 'next/link'
 
@@ -74,6 +75,9 @@ export function AppLayout({ title, description, children, showCard = true, showA
             </div>
           )}
         </div>
+        
+        {/* フッター */}
+        <Footer />
       </main>
     </div>
   )
